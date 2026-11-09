@@ -52,7 +52,7 @@
     view = next;
     if(next==='history')renderHistory();
     document.querySelectorAll('.view').forEach(e => e.classList.toggle('active', e.id === 'view-' + next));
-    document.querySelectorAll('[data-view]').forEach(e => e.classList.toggle('active', e.dataset.view === (next==='calc'&&scope==='table'?'game':next)));
+    document.querySelectorAll('[data-view]').forEach(e => e.classList.toggle('active', e.dataset.view === (next.endsWith('-table')?'yaku':next==='calc'&&scope==='table'?'game':next)));
     window.scrollTo(0, 0);
     miniResult.classList.toggle('hidden', next !== 'calc' || !result);
   }
@@ -60,6 +60,7 @@
     if ($('diceDialog').open) { $('diceDialog').close(); return true; }
     if ($('tilePicker').open) { $('tilePicker').close(); return true; }
     if ($('dialog').open) { $('dialog').close(); return true; }
+    if (view.endsWith('-table')) { show('yaku'); return true; }
     if (view !== 'game') { show('game'); return true; }
     return false;
   };
@@ -333,7 +334,7 @@
   function render() { sync(); renderHand(); renderResult(); renderGame(); renderHistory(); }
   function changed() { S.booked = false; sync(); renderHand(); renderResult(); saveState(); }
   function openSolo(){switchScope('solo');S.method='hand';render();saveState();show('calc');}
-  document.querySelectorAll('[data-view]').forEach(e=>e.onclick=()=>{if(e.dataset.view==='calc')openSolo();else show(e.dataset.view);});
+  document.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(b){if(b.dataset.view==='calc')openSolo();else show(b.dataset.view);}});
   $('openSolo').onclick=openSolo;
   $('entryTabs').onclick=e=>{const b=e.target.closest('[data-entry]');if(!b)return;target=b.dataset.entry==='meld'?(!['hand','dora','ura'].includes(target)?target:'pon'):b.dataset.entry;draft=[];sync();renderHand();};
   $('meldKinds').onclick=e=>{const b=e.target.closest('[data-meld]');if(!b)return;target=b.dataset.meld;draft=[];sync();renderHand();};

@@ -1,0 +1,7 @@
+android/local-signing.jks
+android/signing-password.txt
+android/build/
+original-web-backup.zip
+*.apk
+*.idsig
+node_modules/

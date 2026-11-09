@@ -18,7 +18,7 @@ New-Item -ItemType Directory -Force -Path $BuildDirectory,"$BuildDirectory\asset
 Copy-Item -LiteralPath "$PSScriptRoot\res" -Destination $BuildDirectory -Recurse -Force
 Copy-Item -LiteralPath "$PSScriptRoot\AndroidManifest.xml" -Destination $BuildDirectory -Force
 Copy-Item -LiteralPath "$PSScriptRoot\src\com\queyou\score\MainActivity.java" -Destination $BuildDirectory -Force
-foreach($file in @('index.html','styles.css','mobile-v2.css','tiles.js','engine.js','rounds.js','ledger.js','examples.js','guide.js','practice.js','practice-ui.js','app.js','favicon.svg','app-icon.png')) { Copy-Item -LiteralPath "$project\$file" -Destination "$BuildDirectory\assets\$file" -Force }
+foreach($file in @('index.html','styles.css','mobile-v2.css','tiles.js','engine.js','rounds.js','ledger.js','examples.js','guide.js','tutorial.js','references.js','references-ui.js','practice.js','practice-ui.js','app.js','favicon.svg','app-icon.png')) { Copy-Item -LiteralPath "$project\$file" -Destination "$BuildDirectory\assets\$file" -Force }
 & "$BuildTools\aapt2.exe" compile --dir "$BuildDirectory\res" -o "$BuildDirectory\resources.zip"
 Check-Exit
 & "$BuildTools\aapt2.exe" link -o "$BuildDirectory\unsigned.apk" -I $AndroidJar --manifest "$BuildDirectory\AndroidManifest.xml" --min-sdk-version 26 --target-sdk-version 35 -A "$BuildDirectory\assets" "$BuildDirectory\resources.zip"

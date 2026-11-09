@@ -3,15 +3,46 @@
   const M=typeof module!=='undefined'&&module.exports?require('./engine'):root.MJ;
   const E=typeof module!=='undefined'&&module.exports?require('./examples'):root.MJExamples;
   const choose=(a,rng)=>a[Math.min(a.length-1,Math.floor(rng()*a.length))];
-  function pointQuestion(options={},rng=Math.random){
+  function pointQuestion(options={},rng=Math.random,previous){
     const players=options.players===3?3:4,advanced=options.level==='advanced';
-    const ctx={players,seatWind:choose([0,1],rng),tsumo:choose([false,true],rng),honba:advanced?choose([0,1,2,3],rng):0,riichiSticks:advanced?choose([0,1,2],rng):0};
-    const han=choose(advanced?[1,2,3,4,5,6,7,8,10,11,12,13]:[1,2,3,4],rng);
-    const fus=(advanced?[20,25,30,40,50,60,70,80,90,100,110]:[30,40,50,60]).filter(f=>!(f===20&&(!ctx.tsumo||han<2)||f===25&&(han<2||ctx.tsumo&&han<3)||f===110&&ctx.tsumo&&han<2));
-    const fu=choose(fus,rng),result=M.quickScore(han,fu,ctx,0);
-    const fields=result.payments.map((p,i)=>({id:'pay'+i,label:ctx.tsumo?`${p.from}支付（${p.count} 人，每人）`:'放铳者支付',answer:p.amount}));
-    fields.push({id:'total',label:'和牌者总收入（含本场与供托）',answer:result.grandTotal});
-    return {kind:'points',ctx,han,fu,result,fields};
+    const examples=E.entries.filter(e=>!['双立直','一发','岭上开花','抢杠','海底摸月','河底捞鱼','天和','地和'].includes(e.name)).map(e=>({...e,id:'yaku-'+e.name}));
+    const pool=fuCases.filter(e=>advanced||!e.level).concat(advanced?examples:[]).filter(e=>e.id!==previous&&(players===4||!e.fourOnly));
+    const first=Math.min(pool.length-1,Math.floor(rng()*pool.length));
+    for(let attempt=0;attempt<pool.length;attempt++){
+      const e=pool[(first+attempt)%pool.length];
+      const suits=choose(players===3?['mps','msp']:['mps','msp','pms','psm','smp','spm'],rng);
+      const trans=s=>s.replace(/[mps]/g,c=>suits['mps'.indexOf(c)]);
+      const input=E.input({groups:e.groups.map(g=>typeof g==='string'?trans(g):{kind:g.kind,tiles:trans(g.tiles)}),win:trans(e.win)});
+      if(players===3&&(input.tiles.concat(input.win,input.melds.flatMap(m=>m.tiles)).some(t=>M.redBase(t)>0&&M.redBase(t)<8)||input.melds.some(m=>m.kind==='chi')))continue;
+      const ctx={players,seatWind:choose([0,1],rng),roundWind:choose([0,1],rng),riichi:'riichi',tsumo:false,honba:0,riichiSticks:0,nuki:0,rules:{kiriage:false,doubleYakuman:true,doubleWindFu:4},...e.ctx};
+      ctx.players=players;ctx.seatWind=choose([0,1],rng);ctx.roundWind=choose([0,1],rng);
+      ctx.honba=advanced?choose([0,1,2,3],rng):0;ctx.riichiSticks=advanced?choose([0,1,2],rng):0;
+      const held=()=>input.tiles.concat(input.win,input.melds.flatMap(m=>m.tiles));
+      if(advanced){
+        for(const suit of (players===3?[1,2]:[0,1,2]))if(rng()<.4){
+          const normal=suit*9+4,red=34+suit;
+          if(input.win===normal)input.win=red;
+          else if(input.tiles.includes(normal))input.tiles[input.tiles.indexOf(normal)]=red;
+          else {const meld=input.melds.find(m=>m.tiles.includes(normal));if(meld)meld.tiles[meld.tiles.indexOf(normal)]=red;}
+        }
+        if(players===3)ctx.nuki=choose(Array.from({length:Math.min(2,4-held().filter(t=>t===30).length)+1},(_,i)=>i),rng);
+      }
+      ctx.doraIndicators=[];ctx.uraIndicators=[];
+      const physical=held().concat(Array(ctx.nuki).fill(30)),count=1+input.melds.filter(m=>m.tiles.length===4).length;
+      const indicator=key=>{
+        const available=Array.from({length:34},(_,i)=>i).filter(t=>(players===4||!(t>0&&t<8))&&physical.filter(x=>M.redBase(x)===t).length<4&&(![4,13,22].includes(t)||physical.filter(x=>x===t).length<3));
+        const candidates=advanced?available:available.filter(t=>!held().some(x=>M.redBase(x)===M.nextDora(t,players)));
+        const t=choose(candidates,rng);if(t===undefined)return false;ctx[key].push(t);physical.push(t);return true;
+      };
+      let valid=true;for(let i=0;i<count;i++)valid=indicator('doraIndicators')&&valid;
+      if(ctx.riichi!=='none')for(let i=0;i<count;i++)valid=indicator('uraIndicators')&&valid;
+      if(!valid)continue;
+      const scored=M.score(input,ctx);if(!scored.ok||!advanced&&(scored.best.yakuman||scored.best.han>4))continue;
+      const result=scored.best,fields=result.payments.map((p,i)=>({id:'pay'+i,label:ctx.tsumo?`${p.from}支付（${p.count} 人，每人）`:'放铳者支付',answer:p.amount}));
+      fields.push({id:'total',label:'和牌者总收入（含本场与供托）',answer:result.grandTotal});
+      return {kind:'points',id:e.id,ctx,input,han:result.han,fu:result.fu,result,fields};
+    }
+    throw Error('暂时无法生成题目，请换一题');
   }
   const call=(kind,tiles)=>({kind,tiles});
   const common=['123p','456p','789s','234s','55s'];
