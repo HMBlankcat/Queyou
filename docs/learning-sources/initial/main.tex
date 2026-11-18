@@ -1,0 +1,673 @@
+% Compile with Tectonic (XeTeX) or XeLaTeX.
+\documentclass[UTF8,a4paper,zihao=5,fontset=fandol]{ctexart}
+\usepackage[margin=19mm,top=19mm,bottom=19mm,headheight=16pt,headsep=7mm,footskip=9mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{texgyrepagella-regular.otf}[BoldFont=texgyrepagella-bold.otf,ItalicFont=texgyrepagella-italic.otf,BoldItalicFont=texgyrepagella-bolditalic.otf]
+\setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf]
+\setmonofont{lmmono10-regular.otf}
+% On Windows use TrueType Chinese fonts for reliable PDF text extraction.
+% Fandol remains the fallback when these standard Windows fonts are absent.
+\IfFileExists{C:/Windows/Fonts/simsun.ttc}{
+  \setCJKmainfont{SimSun}[BoldFont=Microsoft YaHei Bold]
+  \setCJKsansfont{Microsoft YaHei}[BoldFont=Microsoft YaHei Bold]
+  \setCJKmonofont{Microsoft YaHei}[BoldFont=Microsoft YaHei Bold]
+}{}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[most]{tcolorbox}
+\usepackage{tabularx,booktabs,array,enumitem,multicol,fancyhdr,lastpage}
+\usepackage{amsmath,amssymb}
+\usepackage[unicode,colorlinks=true,linkcolor=teal,urlcolor=teal,bookmarksnumbered=true]{hyperref}
+\hypersetup{pdftitle={日本立直麻将：从认牌到打完第一局},pdfauthor={新手入门指南},pdfsubject={四人立直麻将基础、胡牌条件、役种、牌效率与防守}}
+\definecolor{ink}{HTML}{173B3F}
+\definecolor{teal}{HTML}{147D82}
+\definecolor{gold}{HTML}{B78532}
+\definecolor{paper}{HTML}{F3F7F6}
+\definecolor{muted}{HTML}{5D6C70}
+\definecolor{warn}{HTML}{AC483B}
+\definecolor{tilegreen}{HTML}{226A4F}
+\definecolor{tilered}{HTML}{B43C35}
+\definecolor{tileblue}{HTML}{234E7A}
+\color{ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5.5pt}
+\linespread{1.16}
+\setlist[itemize]{leftmargin=1.45em,itemsep=3pt,topsep=3pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=3pt,topsep=3pt,parsep=0pt}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.3}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\ctexset{
+ section={format=\Large\bfseries\color{ink},number={},beforeskip=0pt,afterskip=8pt},
+ subsection={format=\normalsize\bfseries\color{teal},number={},beforeskip=10pt,afterskip=3pt}
+}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\color{muted}日本立直麻将\quad / \quad 新手入门}
+\fancyhead[R]{\small\color{muted}四人麻将 · 通行规则}
+\fancyfoot[L]{\scriptsize\color{muted}认清牌型，确认有役，再判断能否荣和。}
+\fancyfoot[R]{\small\color{muted}\thepage\,/\,\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\tcbset{enhanced,boxrule=0pt,arc=2mm,left=3mm,right=3mm,top=2.1mm,bottom=2.1mm,before skip=7pt,after skip=7pt,fonttitle=\bfseries}
+\newtcolorbox{note}[1]{colback=paper,colframe=teal,borderline west={1mm}{0pt}{teal},title={#1},coltitle=ink,colbacktitle=paper}
+\newtcolorbox{alert}[1]{colback=warn!5,colframe=warn,borderline west={1mm}{0pt}{warn},title={#1},coltitle=warn,colbacktitle=warn!5}
+\newtcolorbox{example}[1]{colback=gold!7,title={#1},coltitle=ink,colbacktitle=gold!7}
+\newcommand{\pageintro}[3]{\clearpage\phantomsection\label{#1}
+ {\small\sffamily\bfseries\color{gold}#2}\par\vspace{2pt}\section{#3}}
+\newcommand{\smalltext}[1]{{\small\color{muted}#1}}
+\newcommand{\key}[1]{\textbf{\color{teal}#1}}
+\newcommand{\sep}{\hspace{3mm}}
+\newcommand{\gap}{\hspace{1.7mm}}
+\newcommand{\notation}[1]{{\ttfamily\color{teal}#1}}
+% All tile illustrations are drawn as vectors; no external images are required.
+\newcommand{\tilebase}{\path[fill=teal!12,rounded corners=0.65mm] (.035,-.035) rectangle (.535,.685);
+ \path[draw=ink!35,fill=white,line width=.4pt,rounded corners=.65mm] (0,0) rectangle (.5,.72);}
+\newcommand{\mt}[1]{\tikz[x=1cm,y=1cm,baseline=-.11cm]{\tilebase
+ \node[font=\fontsize{12}{12}\selectfont,text=ink] at (.25,.48) {#1};
+ \node[font=\fontsize{9}{9}\selectfont,text=tilered] at (.25,.21) {萬};}\hspace{.35mm}}
+\newcommand{\zt}[1]{\tikz[x=1cm,y=1cm,baseline=-.11cm]{\tilebase
+ \node[font=\fontsize{15}{15}\selectfont\bfseries,text=ink] at (.25,.37) {#1};}\hspace{.35mm}}
+\newcommand{\greenzt}[1]{\tikz[x=1cm,y=1cm,baseline=-.11cm]{\tilebase
+ \node[font=\fontsize{15}{15}\selectfont\bfseries,text=tilegreen] at (.25,.37) {#1};}\hspace{.35mm}}
+\newcommand{\redzt}[1]{\tikz[x=1cm,y=1cm,baseline=-.11cm]{\tilebase
+ \node[font=\fontsize{15}{15}\selectfont\bfseries,text=tilered] at (.25,.37) {#1};}\hspace{.35mm}}
+\newcommand{\whitezt}{\tikz[x=1cm,y=1cm,baseline=-.11cm]{\tilebase
+ \draw[tileblue!70,line width=.6pt] (.1,.13) rectangle (.4,.59);}\hspace{.35mm}}
+% Pip placements match the count and basic layout of ordinary circle/bamboo tiles.
+\newcommand{\pipcoords}[1]{%
+ \ifcase#1\relax\or
+ \def\coords{.25/.36}\or
+ \def\coords{.25/.53,.25/.19}\or
+ \def\coords{.13/.57,.25/.36,.37/.15}\or
+ \def\coords{.13/.54,.37/.54,.13/.18,.37/.18}\or
+ \def\coords{.13/.56,.37/.56,.25/.36,.13/.16,.37/.16}\or
+ \def\coords{.13/.56,.37/.56,.13/.36,.37/.36,.13/.16,.37/.16}\or
+ \def\coords{.13/.59,.25/.47,.37/.35,.13/.23,.37/.23,.13/.10,.37/.10}\or
+ \def\coords{.13/.60,.37/.60,.13/.44,.37/.44,.13/.28,.37/.28,.13/.12,.37/.12}\or
+ \def\coords{.12/.57,.25/.57,.38/.57,.12/.36,.25/.36,.38/.36,.12/.15,.25/.15,.38/.15}%
+ \fi}
+\newcommand{\pt}[1]{\tikz[x=1cm,y=1cm,baseline=-.11cm]{\tilebase\pipcoords{#1}
+ \foreach \px/\py in \coords {\draw[tileblue,line width=.65pt,fill=tileblue!7] (\px,\py) circle (.043);}}\hspace{.35mm}}
+\newcommand{\st}[1]{\tikz[x=1cm,y=1cm,baseline=-.11cm]{\tilebase
+ \ifnum#1=1
+ \path[fill=tilegreen] (.26,.35) ellipse (.105 and .17);
+ \draw[tilegreen,line width=1.2pt] (.26,.36) -- (.13,.2) (.26,.36) -- (.39,.2);
+ \path[fill=tilegreen] (.28,.53) circle (.065);
+ \path[fill=tilered] (.32,.55) -- (.41,.52) -- (.32,.50) -- cycle;
+ \draw[tilegreen,line width=.7pt] (.22,.19) -- (.2,.11) (.30,.19) -- (.33,.11);
+ \else\pipcoords{#1}
+ \foreach \px/\py in \coords {\draw[tilegreen,line width=1.3pt,line cap=round] (\px,\py-.047) -- (\px,\py+.047);
+ \draw[tilegreen,line width=.5pt] (\px-.026,\py) -- (\px+.026,\py);}
+ \fi}\hspace{.35mm}}
+\newcommand{\hand}[1]{\par\noindent\begin{minipage}{\linewidth}\vspace{2pt}#1\vspace{3pt}\end{minipage}\par}
+\newcommand{\flowbox}[2]{\begin{tcolorbox}[colback=paper,boxsep=0pt,top=1.6mm,bottom=1.6mm]
+ \textbf{\color{teal}#1}\quad #2\end{tcolorbox}}
+\begin{document}
+\thispagestyle{empty}
+\vspace*{6mm}
+{\sffamily\small\bfseries\color{teal}RIICHI MAHJONG \quad | \quad BEGINNER'S GUIDE}\par
+\vspace{6mm}
+{\fontsize{31}{38}\selectfont\bfseries 日本立直麻将}\par
+\vspace{3mm}
+{\fontsize{21}{28}\selectfont 从认牌到打完第一局}\par
+\vspace{5mm}
+{\large 中文新手入门基础}\par
+\vspace{8mm}
+\hand{\mt{2}\mt{3}\mt{4}\sep\pt{3}\pt{4}\pt{5}\sep\st{6}\st{7}\st{8}\sep\redzt{中}\redzt{中}\redzt{中}\sep\zt{東}\zt{東}}
+\smalltext{示例：四组面子 + 一对雀头。三张中构成“役牌”，为这手牌提供胡牌资格。}
+\vspace{5mm}
+\begin{note}{先记住这三句话}
+\textbf{通常要凑成“四组面子 + 一对雀头”。}\\
+\textbf{牌型完整之后，还要有至少一个役。}\\
+\textbf{想胡别人打出的牌，还必须没有振听。}
+\end{note}
+\vspace{2mm}
+\subsection{这本指南怎么读}
+\par\noindent\begin{tabularx}{\linewidth}{L{25mm}Y r}
+\toprule
+阶段 & 你将学会 & 页码\\
+\midrule
+认识牌桌 & 认牌、轮次、摸打与吃碰杠 & \pageref{tiles}--\pageref{turn}\\
+学会胡牌 & 基本牌型、听牌、有役与振听 & \pageref{shape}--\pageref{yaku}\\
+开始决策 & 宝牌、副露、牌效率与基础防守 & \pageref{calls}--\pageref{defense}\\
+完成一局 & 点数、实战演示、役种番数表与速查 & \pageref{score}--\pageref{cheat}\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+\vfill
+\smalltext{适用范围：常见四人立直麻将，按可食断、常见赤宝牌规则讲解。平台与比赛的细则可能不同；涉及差异处另有说明。}\\[3pt]
+\smalltext{阅读建议：第一次先学会合法胡牌；符数、特殊役与精细攻守判断可以后学。}\\[5mm]
+{\small\color{muted}入门手册 \quad · \quad 2026 年 11 月}
+
+\pageintro{tiles}{01 / RECOGNIZE}{认识一副牌：34 种，通常共 136 张}
+\subsection{三门数牌：万、筒、索}
+每一门都是 1 至 9，共 27 种；每一种有 4 张。筒也叫“饼”，索也叫“条”。
+\hand{\mt{1}\mt{2}\mt{3}\mt{4}\mt{5}\mt{6}\mt{7}\mt{8}\mt{9}\quad\smalltext{万子}}
+\hand{\pt{1}\pt{2}\pt{3}\pt{4}\pt{5}\pt{6}\pt{7}\pt{8}\pt{9}\quad\smalltext{筒子}}
+\hand{\st{1}\st{2}\st{3}\st{4}\st{5}\st{6}\st{7}\st{8}\st{9}\quad\smalltext{索子}}
+\smalltext{本书使用简化矢量牌面；一索通常画成鸟。所有牌例也配有文字或简记。}
+\subsection{七种字牌：风牌与三元牌}
+\hand{\zt{東}\zt{南}\zt{西}\zt{北}\sep\whitezt\greenzt{發}\redzt{中}}
+\textbf{东、南、西、北}是风牌；\textbf{白、发、中}是三元牌。白板的外观可能为空白或蓝框。字牌没有数字顺序，\key{不能组成顺子}。
+
+\par\noindent\begin{tabularx}{\linewidth}{L{26mm}Y}
+\toprule
+名称 & 含义\\
+\midrule
+幺九牌 & 1、9 的数牌，以及全部字牌\\
+中张牌 & 2 至 8 的数牌\\
+赤五 & 部分规则将若干普通五替换成红色五；属于宝牌，张数通常仍是 136\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+\subsection{看懂牌谱里的字母}
+\notation{m} 表示万（manzu），\notation{p} 表示筒（pinzu），\notation{s} 表示索（souzu）。
+例如 \notation{234m 345p 678s} 就是二三四万、三四五筒、六七八索。
+字牌优先直接写汉字；常见简记 \notation{1z--7z} 依次为东南西北白发中，\notation{0m/0p/0s} 常表示赤五。
+
+\begin{note}{先避免两个误会}
+\textbf{四张同种牌不是四种牌。} 四张五筒只是同一种牌的四个副本。\\
+\textbf{没有花牌。} 本书讨论的通常四人立直麻将，不使用春夏秋冬等花牌。
+\end{note}
+
+\pageintro{turn}{02 / GAME FLOW}{一局怎么进行：摸一张，打一张}
+\subsection{座位、庄家与比赛长度}
+四人分别坐东、南、西、北位，\key{东家是本局庄家}。自风就是你当前的座位风；场风由比赛阶段决定，例如东场是东风、南场是南风。
+\textbf{东风战}通常只打东场，\textbf{半庄战}通常打东场和南场；连庄会增加实际局数。
+
+\subsection{从配牌到结束}
+\flowbox{1. 配牌}{通常每人 13 张，庄家先开始。若直接配给庄家 14 张，则庄家先打牌。}
+\flowbox{2. 摸牌}{轮到自己，从牌山摸 1 张；未开杠时，手中暂时有 14 张。}
+\flowbox{3. 打牌}{选 1 张放进自己的牌河，回到 13 张；然后轮到下家。}
+\flowbox{4. 可选行动}{有人出牌后，其他玩家可能荣和、碰、杠；只有出牌者的下家可以吃。}
+\flowbox{5. 一局结束}{有人胡牌，或可摸的牌摸完。特殊途中流局与具体连庄方式依规则而定。}
+
+\begin{note}{摸打顺序与“上家”}
+轮到你之后，下一个正常摸牌的人是\textbf{下家}；在你之前正常行动的人是\textbf{上家}。\\
+从你的视角，上家通常在左侧，下家在右侧，对家在对面。座位按东→南→西→北推进。
+\end{note}
+\subsection{你在界面上会看到什么}
+\begin{itemize}
+\item \textbf{手牌}：你自己持有的牌；吃碰杠展示在旁边的部分称为副露区。
+\item \textbf{牌河}：每人按顺序打出的牌。它是判断振听和防守的重要信息。
+\item \textbf{王牌}：牌山末尾保留的 14 张，涉及岭上牌与宝牌指示牌，不按普通顺序摸。
+\item \textbf{点棒}：四人常从各 25\,000 点开始；目标是比赛结束时争取更好的名次。
+\end{itemize}
+\subsection{胡牌方式}
+\key{自摸}：自己摸到能完成合法胡牌的牌。通常由其余三家分摊支付。\\
+\key{荣和}：用别人刚打出的牌完成合法胡牌，由出牌者支付；这位玩家称为“放铳”。
+\smalltext{碰、吃会改变接下来的行动顺序；细节见第 \pageref{calls} 页。真实牌桌上，先确认动作，再伸手拿牌。}
+
+\pageintro{shape}{03 / HAND SHAPES}{怎么凑牌：四组面子 + 一对雀头}
+\subsection{最常见的完成形式}
+\[
+\boxed{\text{四组面子}+\text{一对雀头}}
+\qquad 3+3+3+3+2=14
+\]
+\textbf{顺子}：同一门连续的三张，例如 \notation{234m}。不能跨花色，也不能把 \notation{891m} 连在一起。\\
+\textbf{刻子}：三张完全相同的牌，例如中中中。\\
+\textbf{雀头}：两张完全相同的牌，也叫对子。\\
+\textbf{杠子}：四张完全相同的牌，在结构上仍只算一组面子；每开一杠，实际持有的牌总数多一张。
+
+\begin{example}{一手完整牌形}
+\hand{\mt{2}\mt{3}\mt{4}\sep\pt{3}\pt{4}\pt{5}\sep\st{6}\st{7}\st{8}\sep\redzt{中}\redzt{中}\redzt{中}\sep\zt{東}\zt{東}}
+三组顺子 + 一组中刻子 + 一对东。中刻子提供“役牌”这个役。
+\end{example}
+
+\subsection{差一张就完成，叫“听牌”}
+例如已有 \notation{123m 456m 789p 55s}，剩下 \notation{23s}：摸到或荣和 \notation{1s}、\notation{4s}，就能完成结构。两种都可以，所以叫“两面听牌”。
+\par\noindent\begin{tabularx}{\linewidth}{L{21mm}L{33mm}Y}
+\toprule
+听牌形 & 未完成部分 → 等待 & 怎么理解\\
+\midrule
+两面 & \notation{23s} → \notation{1s / 4s} & 能从两端接上，通常更容易和\\
+嵌张 & \notation{24s} → \notation{3s} & 只等中间一张\\
+边张 & \notation{12s} → \notation{3s} & 只等边上的连接牌\\
+单骑 & 单张东 → 东 & 等另一张东来凑雀头\\
+双碰 & \notation{55m 77p} → \notation{5m / 7p} & 其中一对变刻子，另一对做雀头\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+\smalltext{表中除未完成部分外，其余牌均已配好。听到的牌是否还能荣和，仍要检查役与振听。}
+
+\subsection{两种特殊完成形}
+\textbf{七对子}：七个不同的对子，必须门前；同种四张不能拆算成两对。\\
+\textbf{国士无双}：13 种幺九牌各一张，再让其中一种多一张作对子，必须门前。13 种是三门的 1、9，以及东南西北白发中。
+\begin{note}{“听牌”与“能胡”分开检查}
+听牌通常先描述\textbf{结构上只差一张}。即使听牌，没有役也可能不能和；荣和时还要过振听检查。
+\end{note}
+
+\pageintro{legal}{04 / LEGAL WIN}{怎样才算合法胡牌}
+\subsection{胡牌前，依次检查三道门}
+\begin{enumerate}
+\item \textbf{结构完成了吗？} 通常是四面子一雀头，或七对子、国士无双。
+\item \textbf{至少有一个役吗？} 立直、断幺九、役牌等都可以；\key{只有宝牌不够}。
+\item \textbf{如果是荣和，有振听吗？} 有振听便不能荣和；通常仍可在有役时自摸。
+\end{enumerate}
+\subsection{“役”是什么}
+役是规则认可的胡牌条件，通常也决定番数。它可能来自牌型、门前状态或胡牌方式。
+例如三张中是\textbf{役牌}；全部使用 2 至 8 的数牌可以构成\textbf{断幺九}。
+\textbf{门前清自摸和}本身也是役，所以门前牌可能自摸能和、荣和却无役。
+
+\begin{alert}{振听不是只禁某一张}
+只要触发振听，限制的是\textbf{这手牌的全部荣和}，不是仅禁止胡某一个牌种。\\
+自己舍过的牌即使后来被别人吃、碰、杠走，也仍用于判断舍牌振听。
+\end{alert}
+
+\subsection{三种最常见的振听}
+\par\noindent\begin{tabularx}{\linewidth}{L{22mm}Y}
+\toprule
+类型 & 原因与持续时间\\
+\midrule
+舍牌振听 & 自己当前的\textbf{结构性等待牌}中，任意一种曾被自己打出。只要这个交集还在，就不能荣和；改变听牌后需重新检查。\\
+同巡振听 & 未立直时，放过别人打出的能完成自己牌形的牌，通常到\textbf{自己下一次摸牌或鸣牌}后解除；具体解除时点以桌规为准。\\
+立直后振听 & 立直后放过自己的和牌牌，之后本局不能再荣和；仍可合法自摸。\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+\smalltext{通行规则判断振听时，即使某一张因无役而不能荣和，也不能随意忽略它。不要把“没有点胡牌按钮”当作不会振听。}
+
+\begin{example}{经典陷阱：我只想胡另一头，也不行}
+你听 \notation{3m / 6m}，自己的牌河里有 \notation{3m}。\\
+此时别人打 \notation{6m}，\textbf{仍然不能荣和}：你已经处于舍牌振听。\\
+如果自己摸到 \notation{3m} 或 \notation{6m}，且满足有役等条件，则可以自摸。
+\end{example}
+\subsection{新手的实用检查顺序}
+先说清楚“我靠什么役胡牌”，再列出\textbf{全部等待牌}，最后对照自己的完整弃牌记录。
+线上平台会帮助判断，线下则需要你自己负责。
+
+\pageintro{riichi}{05 / RIICHI}{立直：给门前听牌加上一个役}
+\subsection{先理解“门前”}
+没有吃、碰、明杠等把他人的牌拿进自己的手牌，通常就是\key{门前}。
+\textbf{暗杠一般不破坏门前状态。} 荣和别人打出的最后一张牌，也不等于事先副露，不会因此失去立直或门前役。
+
+\subsection{什么时候能宣告立直}
+通常需要同时满足：
+\begin{itemize}
+\item 仍然门前，并且\textbf{打出宣言牌之后听牌}。
+\item 有至少 1\,000 点，能支付立直棒。
+\item 牌山还满足立直所需的剩余张数；常见规则为活牌山至少剩 4 张。
+\end{itemize}
+操作是\textbf{宣告“立直” → 横置宣言舍牌 → 放出 1\,000 点立直棒}。
+若宣言牌被荣和，则立直不成立；细节由平台或裁判处理。
+
+\begin{note}{立直带来什么}
+立直成立后，和牌时获得\textbf{立直 1 番}。通常还能在和牌时查看\textbf{里宝牌}；若满足额外条件，也可能有“一发”等加番。
+立直棒是供托，由之后获胜者按规则收取；流局时通常留在桌上。
+\end{note}
+
+\subsection{立直之后，手牌基本锁住}
+\begin{itemize}
+\item 一般只能\textbf{摸切}，即把刚摸来的牌打出，直到胡牌或结束。
+\item 不能再吃、碰，也不能随意换等待。暗杠只有在满足严格限制时才允许；新手可先不做。
+\item 不能撤销立直。即使发现危险，也很难再转入防守。
+\item \textbf{振听也可能立直}，但这不会让你恢复荣和资格，仍要自己摸到。
+\end{itemize}
+\subsection{新手什么时候适合立直}
+\textbf{门前、听牌较好、剩余牌较多}时，立直是很容易执行的进攻路线，尤其是原本无役的手牌。
+不过，若对手已经明显进攻、自己的等待很差或比赛名次要求特殊，就要先考虑风险。
+
+\begin{example}{一条可靠的新手路线}
+保留顺子材料 → 不急着吃碰 → 门前听牌 → 检查振听 → 宣告立直 → 等待合法荣和或自摸。
+\end{example}
+\smalltext{立直不要求原本已有其他役。也不是“听牌后必须立直”；已经有役时，可以选择默听，保留换牌与防守的自由。}
+
+\pageintro{yaku}{06 / YAKU}{先记住这些役，就足够开始玩}
+\par\noindent\begin{tabularx}{\linewidth}{L{20mm}L{13mm}L{18mm}Y}
+\toprule
+役 & 番数 & 门前要求 & 核心条件\\
+\midrule
+立直 & 1 & 必须 & 门前听牌并合法宣告立直\\
+门前自摸 & 1 & 必须 & 门前，由自己摸到和牌牌\\
+断幺九 & 1 & 通常可副露 & 所有牌都是 2 至 8 的数牌，无 1、9、字牌\\
+役牌 & 每组 1 & 可副露 & 白、发、中，或自己的自风、当前场风，做成刻子或杠子\\
+平和 & 1 & 必须 & 四组顺子；雀头不是役牌；最后以两面等待完成\\
+一杯口 & 1 & 必须 & 同门、同数字的顺子各一组，例如两组 \notation{234m}\\
+七对子 & 2 & 必须 & 七个不同的对子\\
+对对和 & 2 & 可副露 & 四组刻子或杠子，加一对雀头\\
+混一色 & 3／2 & 可副露 & 只有一种数牌花色，加字牌；门前 3 番、副露 2 番\\
+清一色 & 6／5 & 可副露 & 只用一种数牌花色，不含字牌；门前 6 番、副露 5 番\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+\smalltext{“可副露断幺九”常称“食断”；部分规则关闭。番数可在兼容的役之间相加，但不代表任意两役都能同时成立。}
+
+\subsection{役牌：最快学会的副露路线}
+白、发、中任何一种组成刻子，都提供 1 番。风牌必须看身份：例如东场你坐东家，东刻子同时满足场风和自风，通常共 2 番；客风刻子本身没有役。
+
+\subsection{平和：三个条件缺一不可}
+\textbf{四顺子、非役牌雀头、两面听牌}，还必须门前。\\
+非役牌的风牌对子可以做平和雀头；白发中、自风、场风的对子不行。
+\begin{example}{一个完整的平和牌例}
+听牌时：\notation{123m 456m 789p 55s 23s}\\
+门前等待 \notation{1s / 4s}：四顺子，五索作雀头，最后两面完成。\\
+荣和可有平和；如果已立直，再加立直；如果自摸，再加门前清自摸和。
+\end{example}
+
+\begin{alert}{三个常见“看起来像役”的误会}
+\textbf{有顺子}不一定是平和；\textbf{有对子}不算役牌；\textbf{宝牌多}也不能替代役。\\
+先把断幺九、役牌、立直三条路线用熟，再逐步补充其余役。
+\end{alert}
+
+\pageintro{calls}{07 / CALLS \& DORA}{吃、碰、杠与宝牌}
+\subsection{什么时候可以拿别人的牌}
+\par\noindent\begin{tabularx}{\linewidth}{L{13mm}L{30mm}Y}
+\toprule
+动作 & 需要的牌 & 谁打出时能拿；之后做什么\\
+\midrule
+吃 & 与舍牌组成顺子 & 仅限上家；拿牌展示顺子，\textbf{不再摸牌，直接打一张}\\
+碰 & 手中有两张相同牌 & 任意一家；拿牌展示刻子，\textbf{不再摸牌，直接打一张}\\
+大明杠 & 手中有三张相同牌 & 任意一家；凑成四张，按规则补岭上牌，再打牌\\
+加杠 & 已碰一组，又得到第四张 & 自己回合把刻子加成杠；可能被抢杠\\
+暗杠 & 自己集齐四张相同牌 & 自己回合宣告；通常仍算门前，也要补岭上牌\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+荣和优先于普通吃碰杠；碰、杠通常优先于吃。多家荣和如何处理由规则决定。
+吃碰后不能随意马上打出某些相关牌，称为\textbf{食替限制}，具体以房间规则为准。
+
+\begin{note}{吃碰会更快，但要先想“我的役在哪”}
+吃碰和明杠通常会失去门前状态，于是不能再立直，也没有门前清自摸和。\\
+每次副露前问自己：\textbf{最后靠役牌、断幺九，还是其他可副露役来胡？}
+\end{note}
+
+\subsection{宝牌：增加番数，不提供胡牌资格}
+翻开的牌是\textbf{指示牌}，它的下一张才是宝牌：
+\begin{itemize}
+\item 数牌按 1→2→⋯→9→1 循环。例如指示牌是 \notation{4p}，宝牌就是 \notation{5p}。
+\item 风牌按\textbf{东→南→西→北→东}循环。
+\item 三元牌按\textbf{白→发→中→白}循环。
+\end{itemize}
+每有一张宝牌通常加 1 番；同一指示效果出现多次可重复计数。
+赤五通常另加 1 番，也保留它作为普通五的性质。
+立直和牌者通常还能看\textbf{里宝牌指示牌}，计算方式相同。
+
+\begin{example}{有役之后，宝牌才有用}
+如果你的手牌有“断幺九 1 番”，再有两张宝牌，就是\textbf{合计 3 番}。\\
+若牌型虽完整却没有任何役，即使有三张宝牌，也不能因此胡牌。
+\end{example}
+\subsection{新手先少开杠}
+杠通常会增加宝牌指示牌，也可能提高对手的牌价；加杠还可能被抢杠。
+\textbf{四张一样不代表必须杠。} 立直后能否暗杠尤其要谨慎，按平台提示或桌规执行。
+
+\pageintro{efficiency}{08 / ATTACK}{基础打法：先让手牌更容易听牌}
+\subsection{第一步：先找“五个块”}
+普通完成形需要\textbf{四个面子块和一个雀头块}。
+整理手牌时，找出已完成的面子、相邻两张、嵌张和对子；如果块已经够用，再考虑舍掉多余、效率较低的材料。
+
+\begin{example}{先会看一副容易整理的牌}
+摸牌后：\notation{123m 45m 67p 789s 東東 白 9m}\\
+可以先看成：\notation{123m / 45m / 67p / 789s / 東東} 五个块，外加孤立的白和九万。\\
+若没有明显威胁与特殊目标，优先考虑处理孤张。东对子可做雀头，不必为了“字牌看着没用”直接拆掉。
+\end{example}
+
+\subsection{第二步：优先保留好连接}
+\par\noindent\begin{tabularx}{\linewidth}{L{28mm}Y}
+\toprule
+简单判断 & 原因与边界\\
+\midrule
+两面通常比嵌张好 & \notation{45m} 可进 \notation{3m / 6m}；\notation{46m} 通常只进 \notation{5m}\\
+中张孤张连接较多 & 孤立 \notation{5m} 可与 \notation{3m} 至 \notation{7m} 形成对子或顺子材料；孤立 \notation{1m} 的连接范围更窄\\
+不要轻易拆完成面子 & 已完成一组通常很有价值；不过牌形重叠时仍需整体看\\
+留意有效牌还剩多少 & 看到的牌越多，剩余同种牌越少；名义上“两面”也可能只剩很少张\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+\smalltext{这些是入门启发，不是任何牌局都成立的固定舍牌顺序。宝牌、役、手牌重叠和对手威胁都会改变取舍。}
+
+\subsection{第三步：选一条容易执行的役路线}
+\begin{itemize}
+\item \textbf{牌型普通、顺子材料多}：保留门前，向立直推进。
+\item \textbf{全是中张或容易去掉幺九牌}：考虑断幺九；先确认允许食断。
+\item \textbf{已有白、发、中，或自风／场风对子}：有机会碰成役牌，但不是一定要碰。
+\end{itemize}
+\subsection{向听数：离听牌还有多远}
+\textbf{听牌是 0 向听}；一向听表示还需一次有效推进才能听牌，二向听更远。
+有效牌可能减少向听数，也可能让同向听数下的形状变好。
+\begin{note}{每次出牌前，做三秒检查}
+\textbf{我的役是什么？删掉这张会损失哪些有效牌？现在是否需要防守？}\\
+第一阶段追求“有役、易听、少放铳”，先不强行追求大牌。
+\end{note}
+
+\pageintro{defense}{09 / DEFENSE}{基础防守：有人进攻，就重新估风险}
+\subsection{什么情况值得提高警惕}
+对手立直，是最清楚的听牌信号。对手多次副露、已展示役牌或染手特征、接近后半局时，也可能已经听牌。不要把“没立直”当成安全。
+
+\subsection{第一优先：找对威胁玩家的现物}
+\key{现物}最常指目标玩家自己已经打过的牌。
+因为舍牌振听，这些牌\textbf{不会被这位玩家荣和}。但它们仍可能被另外两家荣和。
+
+\begin{example}{防守必须明确“对谁安全”}
+南家立直，南家之前打过 \notation{7p}，你手上也有 \notation{7p}。\\
+这张七筒对南家的荣和是安全的；如果西家也听牌，它对西家未必安全。\\
+多家威胁时，优先找能同时覆盖多个威胁玩家的安全牌。
+\end{example}
+
+\subsection{没有现物时，不要把推测当保证}
+\par\noindent\begin{tabularx}{\linewidth}{L{22mm}Y}
+\toprule
+常见线索 & 它能说明什么；不能说明什么\\
+\midrule
+筋 & 例如对手舍过 \notation{4m}，\notation{1m}、\notation{7m} 对某些两面等待相对不易放铳；仍可能遇到单骑、双碰或其他等待\\
+壁 & 四张某牌都已可见，可排除部分需要该牌的顺子等待；不能一概排除其他牌形\\
+字牌张数 & 已见张数越多，剩余形成刻子等的空间可能越小；但单骑、国士等仍要考虑\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+\smalltext{筋与壁属于风险线索。初学阶段，先学会稳定使用现物，再学更复杂的读牌。}
+
+\subsection{继续进攻，还是弃和防守}
+\textbf{倾向继续进攻}：自己已经听牌，等待较好、打点足够，而且需要打出的牌风险可接受。\\
+\textbf{倾向弃和}：自己离听牌很远、手牌便宜，却必须连续打危险牌。此时可以拆掉面子，逐张打安全牌，称为\textbf{弃和}。
+\begin{alert}{没有必要每一局都胡}
+少一次大放铳，可能比追一次小和牌更有价值。立直后通常无法自由换牌，所以\textbf{立直前就要考虑是否愿意承担后续风险}。
+\end{alert}
+\subsection{按点数与局面调整}
+领先时，减少高风险放铳通常很重要；落后且剩余局数不多时，可能需要主动争取打点。
+前半局也不是绝对安全，后半局也不是必须弃和：始终结合自己的距离、牌价与对手威胁。
+
+\pageintro{score}{10 / SCORING}{点数怎么看：先懂番，再慢慢学符}
+\subsection{番数和符数各管什么}
+\textbf{番}主要来自役与宝牌，常见读法有 1 番、2 番、3 番。\\
+\textbf{符}来自底符、刻子或杠子、役牌雀头、特定等待以及胡牌方式等。
+入门可先让平台结算，自己检查“有哪些役、多少张宝牌”。
+
+\begin{note}{先记住两个特殊符数}
+\textbf{七对子固定 25 符。} \quad \textbf{平和自摸通常是 20 符。}\\
+其他常见手牌经计算后向上取整到十位，可能为 30、40、50 符等。并非所有 1 番都是 1\,000 点。
+\end{note}
+
+\subsection{先记住这些常见的荣和点数}
+\par\noindent\begin{tabularx}{\linewidth}{Y r r}
+\toprule
+条件（未加本场、供托） & 闲家荣和 & 庄家荣和\\
+\midrule
+1 番 30 符 & 1\,000 & 1\,500\\
+2 番 30 符 & 2\,000 & 2\,900\\
+3 番 30 符 & 3\,900 & 5\,800\\
+4 番 30 符 & 7\,700 & 11\,600\\
+满贯 & 8\,000 & 12\,000\\
+跳满（6--7 番） & 12\,000 & 18\,000\\
+倍满（8--10 番） & 16\,000 & 24\,000\\
+三倍满（11--12 番） & 24\,000 & 36\,000\\
+役满（单倍） & 32\,000 & 48\,000\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+\smalltext{5 番通常为满贯；低于 5 番也可能因符数达到满贯。上表不启用“切上满贯”；13 番以上的累计役满或累计上限，以及复合／双倍役满，按具体规则执行。}
+
+\subsection{荣和、自摸与额外点数}
+\textbf{荣和}：通常由放铳者独自支付。\\
+\textbf{自摸}：庄家和牌时，三家一般等额支付；闲家和牌时，庄家一般比其他闲家付得多。
+例如闲家满贯自摸，常读作\textbf{“2\,000／4\,000”}：另外两位闲家各付 2\,000，庄家付 4\,000。庄家满贯自摸为三家各付 4\,000。
+
+\textbf{本场}：常见每本场，荣和多收 300 点；自摸向每家多收 100 点。\\
+\textbf{供托}：桌上的立直棒通常额外归获胜者；多家荣和等特殊分配按规则执行。
+\subsection{流局、听牌与连庄}
+常见荒牌流局时，若有 1 至 3 人听牌，由未听牌者合计支付 3\,000 点给听牌者：1 人听牌得 3\,000；2 人听牌各得 1\,500；3 人听牌各得 1\,000。全听或全不听通常不交换这笔点数。
+庄家和牌通常连庄；荒牌流局时常见庄家听牌连庄，本场随规则增加。
+
+\pageintro{exampleplay}{11 / WALKTHROUGH}{跟着一手牌，走完“听牌 → 和牌”}
+\subsection{起点：你是东场的南家，仍然门前}
+你目前有 13 张：
+\hand{\mt{1}\mt{2}\mt{3}\sep\mt{4}\mt{5}\mt{6}\sep\pt{7}\pt{8}\pt{9}\sep\st{5}\st{5}\sep\st{2}\st{3}}
+\notation{123m 456m 789p 55s 23s}
+
+\textbf{拆解}：三组完成顺子，一对五索，最后二三索等待一索或四索。\\
+\textbf{役检查}：门前、四顺子、非役牌雀头、两面听牌，所以最终和牌时可有\key{平和}。
+
+\subsection{你的回合：摸到北，决定立直}
+此时摸到的北与当前牌形无关。假设自己的牌河里没有一索、四索，且满足点数与剩余牌数要求：
+\begin{enumerate}
+\item 宣告立直，把\textbf{北}横放打出。
+\item 按规则放出 1\,000 点立直棒，立直成立。
+\item 等待 \notation{1s / 4s}；之后普通摸牌通常都要摸切。
+\end{enumerate}
+
+\subsection{结果 A：别人打出四索，你荣和}
+\hand{\mt{1}\mt{2}\mt{3}\sep\mt{4}\mt{5}\mt{6}\sep\pt{7}\pt{8}\pt{9}\sep\st{5}\st{5}\sep\st{2}\st{3}\st{4}}
+\textbf{完整牌形}：\notation{123m 456m 789p 55s 234s}。\\
+\textbf{番数}：立直 1 番 + 平和 1 番 = 2 番。\\
+\textbf{符数}：20 底符 + 门前荣和 10 符 = 30 符。\\
+\textbf{得点}：作为闲家，为\textbf{2 番 30 符，2\,000 点}，由放铳者支付。
+
+\subsection{结果 B：你自己摸到四索，自摸}
+同样的牌形，增加门前清自摸和 1 番，共\textbf{3 番}。平和自摸按特殊规则为\textbf{20 符}；
+闲家为其他两位闲家各付 \textbf{700}，庄家付 \textbf{1\,300}，共 2\,700 点。
+
+\begin{note}{这个例子刻意省略的加分}
+以上都假设没有一发、宝牌、里宝牌、本场等额外因素。两种结果下，自己刚放出的立直棒也会按供托规则收回；不要把“胡牌所得”与“找回自己的押棒”混为一谈。
+\end{note}
+\begin{alert}{把一个条件改掉，再想一遍}
+如果你此前打过一索，当前等待就会触发\textbf{舍牌振听}：结果 A 的四索也不能荣和；结果 B 在满足条件时仍可以自摸。
+\end{alert}
+
+\pageintro{hantable}{12 / HAN TABLE}{胡牌番数速查表（一）：1 番与 2 番}
+\smalltext{“门前／副露”分别列出对应番数；“—”表示副露后不成立。役种名称有不同译法，以下以常见中文名称为准。}
+\subsection{1 番役}
+{\small
+\par\noindent\begin{tabularx}{\linewidth}{L{25mm}c c Y}
+\toprule
+役种 & 门前 & 副露 & 成立条件\\
+\midrule
+立直 & 1 & — & 门前听牌，合法宣告并支付立直棒\\
+一发 & 1 & — & 立直后不中断的一巡内和牌；吃碰杠等通常打断\\
+门前清自摸和 & 1 & — & 门前，自摸和牌\\
+平和 & 1 & — & 四顺子、非役牌雀头、两面完成\\
+一杯口 & 1 & — & 同花色、同数字的顺子两组\\
+断幺九 & 1 & 1* & 全部为 2 至 8 的数牌；*须允许食断\\
+役牌 & 每组 1 & 每组 1 & 三元牌、自风或场风的刻子／杠子\\
+岭上开花 & 1 & 1 & 用开杠后的岭上补牌自摸和牌\\
+抢杠 & 1 & 1 & 通常为荣和他人的加杠牌\\
+海底摸月 & 1 & 1 & 摸到活牌山最后一张普通摸牌并自摸\\
+河底捞鱼 & 1 & 1 & 荣和最后一次普通摸牌后打出的舍牌\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}}
+\smalltext{一发与海底等细节按桌规执行；国士无双能否抢暗杠等属于例外规则。役牌中的连风牌刻子通常计 2 番。}
+
+\subsection{2 番役}
+{\small
+\par\noindent\begin{tabularx}{\linewidth}{L{25mm}c c Y}
+\toprule
+役种 & 门前 & 副露 & 成立条件\\
+\midrule
+两立直 & 2 & — & 自己第一巡、此前无吃碰杠打断时宣告立直\\
+七对子 & 2 & — & 七个不同的对子，固定 25 符\\
+对对和 & 2 & 2 & 四组刻子／杠子，加一对雀头\\
+三暗刻 & 2 & 2 & 有三组暗刻／暗杠；荣和完成的刻子不算暗刻\\
+三杠子 & 2 & 2 & 有三组杠子\\
+三色同刻 & 2 & 2 & 万、筒、索各有同数字的刻子／杠子\\
+混老头 & 2 & 2 & 全部为 1、9 和字牌；可兼容对对和或七对子\\
+小三元 & 2 & 2 & 两组三元牌刻子／杠子，另一个三元牌作雀头\\
+三色同顺 & 2 & 1 & 万、筒、索各有同数字的顺子\\
+一气通贯 & 2 & 1 & 同门凑齐 \notation{123 / 456 / 789} 三组顺子\\
+混全带幺九 & 2 & 1 & 各面子和雀头均含幺九牌，且有顺子和字牌\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}}
+
+\begin{note}{查表时，这三点最容易漏}
+\textbf{两立直替代普通立直}，不再额外叠加立直 1 番。\\
+\textbf{小三元本身 2 番}，两个三元牌刻子的役牌番数另外计入。\\
+\textbf{三暗刻可副露}：只要其余三组仍是暗刻／暗杠即可；副露不等于全手都是明刻。
+\end{note}
+
+\pageintro{yakuman}{13 / HAN TABLE}{胡牌番数速查表（二）：高番与役满}
+\subsection{3 番、6 番与特殊结算}
+{\small
+\par\noindent\begin{tabularx}{\linewidth}{L{25mm}c c Y}
+\toprule
+役种 & 门前 & 副露 & 成立条件\\
+\midrule
+二杯口 & 3 & — & 四组顺子组成两组一杯口，加雀头\\
+混一色 & 3 & 2 & 只含一种数牌花色及字牌\\
+纯全带幺九 & 3 & 2 & 每个面子及雀头都含 1 或 9；有顺子，无字牌\\
+清一色 & 6 & 5 & 只含一种数牌花色，无字牌\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}}
+\textbf{流局满贯}：常见为荒牌流局时，自己所有舍牌都是幺九牌，且没有被别人鸣走；是否要求门前、如何结算，以规则为准。它按满贯作特殊处理，不能直接当普通“5 番役”与其他役相加。
+
+\subsection{常见役满：按役满点数结算}
+{\small
+\par\noindent\begin{tabularx}{\linewidth}{L{25mm}L{15mm}Y}
+\toprule
+役满 & 门前限定 & 成立条件摘要\\
+\midrule
+国士无双 & 是 & 13 种幺九牌各一张，其中一种再多一张\\
+四暗刻 & 是 & 四组暗刻／暗杠；双碰等待通常须自摸，单骑可荣和\\
+大三元 & 否 & 白、发、中全部组成刻子／杠子\\
+小四喜 & 否 & 三组风牌刻子／杠子，第四种风牌作雀头\\
+大四喜 & 否 & 东、南、西、北全部组成刻子／杠子\\
+字一色 & 否 & 完成形中全部是字牌\\
+清老头 & 否 & 完成形中全部是 1、9 的数牌\\
+绿一色 & 否 & 完成形仅使用 \notation{2s 3s 4s 6s 8s} 及发\\
+九莲宝灯 & 是 & 同门 \notation{1112345678999} 加该门任一张数牌\\
+四杠子 & 否 & 四组杠子，加雀头\\
+天和 & 是 & 庄家在最初配牌时已和牌，未有破坏条件的动作\\
+地和 & 是 & 闲家第一次摸牌即自摸，此前无吃碰杠打断\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}}
+\smalltext{役满通常不再叠加普通役或宝牌来计点。四暗刻单骑、国士十三面、纯正九莲、大四喜是否双倍，以及多役满是否累加，由规则决定。人和等地方役未纳入通行役表。}
+
+\subsection{宝牌加番：单独数，不能代替役}
+\textbf{表宝牌、赤宝牌、里宝牌}通常每张各加 1 番。同一张牌可以同时符合多个宝牌来源。
+里宝牌通常只对立直和牌开放；杠宝牌的翻开时机按规则执行。
+\begin{note}{组合时不能机械相加}
+二杯口不再叠加一杯口，也不与七对子同计；清一色不再叠加混一色；纯全带幺九不再叠加混全带幺九。\\
+累计达到 5、6、8、11、13 番等门槛时，查看点数表与房间的累计上限规则。
+\end{note}
+
+\pageintro{cheat}{14 / QUICK REFERENCE}{一页速查：每次出牌前看这里}
+\par\noindent\begin{tabularx}{\linewidth}{L{24mm}Y}
+\toprule
+你要做什么 & 快速检查\\
+\midrule
+整理手牌 & 普通形目标：四组面子 + 一对雀头；特殊形：七对子、国士无双\\
+确认胡牌 & 结构完成 → 至少有一役 → 荣和还需没有振听\\
+走门前路线 & 不急着吃碰；门前听牌可考虑立直；门前自摸本身可成役\\
+走副露路线 & 先确保役牌、断幺九或其他可副露役；不能靠宝牌补役\\
+宣告立直 & 门前、舍牌后听牌、足够点棒、牌山允许；宣告后手牌基本锁住\\
+判断振听 & 当前任一等待牌曾被自己打过？是否刚放过和牌牌？是否立直后放过？\\
+面对对手进攻 & 先找对威胁者的现物；多家威胁要分别检查；必要时拆牌弃和\\
+计算宝牌 & 看指示牌的下一张；数牌 9→1，风牌北→东，三元牌中→白\\
+\bottomrule
+\end{tabularx}\par\vspace{3pt}
+
+\subsection{十个你会反复听到的词}
+\par\noindent\begin{tabularx}{\linewidth}{L{17mm}Y L{17mm}Y}
+门前 & 未吃碰明杠等 & 副露 & 吃、碰、明杠等公开组合\\
+听牌 & 结构上差一张完成 & 自摸 & 自己摸到和牌牌\\
+荣和 & 胡别人打出的牌 & 放铳 & 打出的牌被别人荣和\\
+立直 & 门前听牌的宣告 & 振听 & 因特定原因不能荣和\\
+役 & 胡牌所需的合法条件 & 宝牌 & 有役后额外增加番数\\
+\end{tabularx}\par\vspace{3pt}
+
+\subsection{规则范围与延伸阅读}
+本书以常见四人立直为入门框架。食断、赤宝牌、起始与返还点、连庄、途中流局、多家荣和、食替、暗杠限制、累计役满与切上满贯等存在规则差异；进入房间或参加比赛前，先看规则页。
+
+\textbf{规则核对来源（查阅于 2026 年 11 月 8 日）}\\
+\href{https://www.worldriichi.org/wrc-rules}{World Riichi Championship：WRC Rules 官方入口}\\
+\href{https://www.worldriichi.org/s/WRC-Rules-2025-42fx.pdf}{WRC Riichi Rules 2025：和牌、振听、役种及计分规则}\\
+\href{https://www.worldriichi.org/s/WRC-Scoring-Table-2025.pdf}{WRC Scoring Table 2025：符番计分表}\\
+\smalltext{WRC 是基础规则的核对参考；其立直牌山限制、切上满贯、人和等与常见线上房间可能不同。本书点数表不启用切上满贯，番数表不收地方役。}
+
+\begin{note}{推荐练习顺序}
+\textbf{第一轮}：只练认牌、摸打与四面子一雀头。\\
+\textbf{第二轮}：用立直、断幺九、役牌各完成几次胡牌。\\
+\textbf{第三轮}：每次听牌主动检查振听；每次对手立直先找现物。\\
+\textbf{之后}：再补符数、完整役种、牌效率与不同点况下的攻守判断。
+\end{note}
+\vfill
+\smalltext{学习目标：能独立打完一局，知道为什么能胡、为什么不能胡，以及什么时候值得停下来防守。}
+\end{document}

@@ -1,0 +1,13 @@
+{
+  "source": "user-provided reference image",
+  "referenceSHA256": "3dcecd9dcc6675a763c3f407d330e250ccbe2caa1d92ceb9e16ba75d6ca24c70",
+  "tileAtlas": "tiles-soul.png",
+  "atlasSHA256": "a0a98ff0603dea8fdcc8553477c4616d6f88206d37eb1af5cc190943d70e0076",
+  "mapping": {
+    "m": "row 1, columns 0-8; red five column 9",
+    "p": "row 2, columns 0-8; red five column 9",
+    "s": "row 0, columns 0-8; red five column 9",
+    "z": "row 3, columns 0-6"
+  },
+  "notes": "Only cell borders and flat paper background removed; tile art comes from user supplied image. Original tutorial pages and diagrams remain unchanged."
+}

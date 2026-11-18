@@ -171,9 +171,39 @@
     return honor(t - 27, aka);
   }
 
-  function svg(id, cls) {
-    return '<svg class="face' + (cls ? ' ' + cls : '') + '" viewBox="0 0 100 130" ' +
-      'xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' + art(id) + '</svg>';
+
+  var currentStyle = 'soul';
+  function soulArt(id) {
+    var t=baseOf(id), col, row;
+    if(t<9){row=1;col=t;}else if(t<18){row=2;col=t-9;}else if(t<27){row=0;col=t-18;}else{row=3;col=t-27;}
+    if(id>=34)col=9;
+    return '<image href="tiles-soul.png" x="'+(-col*100)+'" y="'+(-row*130)+'" width="1000" height="520"/>';
+  }
+  function clearArt(id) {
+    var t=baseOf(id),aka=id>=34,color=aka?RED:t>=18&&t<27?GREEN:t===32?GREEN:t===33?RED:INK;
+    if(t>=27)return glyph(HONOR_GLYPH[t-27],78,color,94);
+    return glyph(CN[t%9],67,color,69)+glyph(SUIT_GLYPH[Math.floor(t/9)],33,color,111);
+  }
+  function styledArt(id,style){return style==='classic'?art(id):style==='clear'?clearArt(id):soulArt(id);}
+  function markLabels(scope) {
+    if(!scope.querySelectorAll)return;
+    scope.querySelectorAll('svg.face[data-tile-id]').forEach(function(el){var holder=el.closest('.tile,.learn-tile');if(holder)holder.dataset.tileLabel=label(Number(el.dataset.tileId));});
+    if(scope.matches&&scope.matches('svg.face[data-tile-id]')){var holder=scope.closest('.tile,.learn-tile');if(holder)holder.dataset.tileLabel=label(Number(scope.dataset.tileId));}
+  }
+  function setStyle(style) {
+    if(['soul','classic','clear'].indexOf(style)<0)return;
+    if(style!==currentStyle&&typeof document!=='undefined')document.querySelectorAll('svg.face[data-tile-id]:not([data-skin-fixed])').forEach(function(el){el.innerHTML=styledArt(Number(el.dataset.tileId),style);});
+    currentStyle=style;
+    if(typeof document!=='undefined')markLabels(document);
+  }
+  if(typeof document!=='undefined')document.addEventListener('DOMContentLoaded',function(){
+    markLabels(document);
+    new MutationObserver(function(records){records.forEach(function(r){r.addedNodes.forEach(function(node){if(node.nodeType===1)markLabels(node);});});}).observe(document.body,{childList:true,subtree:true});
+  });
+
+  function svg(id, cls, fixedStyle) {
+    return '<svg data-tile-id="'+id+'"'+(fixedStyle?' data-skin-fixed="'+fixedStyle+'"':'')+' class="face' + (cls ? ' ' + cls : '') + '" viewBox="0 0 100 130" ' +
+      'xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' + styledArt(id,fixedStyle||currentStyle) + '</svg>';
   }
 
   function label(id) {
@@ -183,5 +213,6 @@
     return CN[t % 9] + SUIT_GLYPH[Math.floor(t / 9)];
   }
 
-  global.MJTiles = { svg: svg, art: art, label: label, baseOf: baseOf };
+  global.MJTiles = { svg: svg, art: art, label: label, baseOf: baseOf, setStyle: setStyle };
+  if(global.MJSettings)setStyle(global.MJSettings.get().tileStyle);
 })(typeof window !== 'undefined' ? window : this);

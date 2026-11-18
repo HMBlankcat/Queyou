@@ -1,0 +1,1409 @@
+{
+  "format": 1,
+  "counts": {
+    "initialPages": 15,
+    "initialChapters": 14,
+    "advancedChapters": 23,
+    "appendices": 46,
+    "questions": 74,
+    "terms": 60,
+    "diagrams": 14,
+    "tables": 126
+  },
+  "sourceFiles": [
+    {
+      "path": "initial/main.tex",
+      "bytes": 42155,
+      "sha256": "b4c38745989d8a52f654a25770b9ed1d2eb5a875c4035595eb3d59ff0ba5c4c1"
+    },
+    {
+      "path": "initial/original.pdf",
+      "bytes": 359905,
+      "sha256": "b263b8967f69c316868cd5ff3471f94d02a5ec1c9ae07a43d430fac19a9090cc"
+    },
+    {
+      "path": "advanced/export-data.js",
+      "bytes": 419315,
+      "sha256": "ddea6638e2e9b6918b00411d566fcea58d9fa3ddaddfa6f0a8048b6829511bbe"
+    },
+    {
+      "path": "advanced/lessons/0001-mj.intro.md",
+      "bytes": 13713,
+      "sha256": "af31b9da4ad1e109eeab23e8c17e6234d2c395c6fbeb728f903d33f7e71393cf"
+    },
+    {
+      "path": "advanced/lessons/0001-mj.intro.quiz.json",
+      "bytes": 2706,
+      "sha256": "8cccec6cd8bf3bc92b9b44d7318aae46bd9d4728e9514d63cdbc0e5cae90ed92"
+    },
+    {
+      "path": "advanced/lessons/0002-mj.win.md",
+      "bytes": 13613,
+      "sha256": "548635a670c2e688b2f1ac6cd6962518b9ece24be717453c2b5cadd674031e74"
+    },
+    {
+      "path": "advanced/lessons/0002-mj.win.quiz.json",
+      "bytes": 2968,
+      "sha256": "197d1145be62d3832cc1f83ac72538109dde8fd6ce2a10b169aabe089d1bae4d"
+    },
+    {
+      "path": "advanced/lessons/0003-mj.yaku.md",
+      "bytes": 13221,
+      "sha256": "c60239c32c6630f79df77036bbba3a0cf6cdc9003ebbc7527d04eb6b3c873010"
+    },
+    {
+      "path": "advanced/lessons/0003-mj.yaku.quiz.json",
+      "bytes": 2955,
+      "sha256": "0844fc2cf5fa0c857b22e5b29f717f9ac5fc646448b4f2d515ed8bed6ed0e39e"
+    },
+    {
+      "path": "advanced/lessons/0004-mj.score.md",
+      "bytes": 12719,
+      "sha256": "45247588eb24bcb82da083fe25b4e78939279dd18c3bcd034723769bac765a7c"
+    },
+    {
+      "path": "advanced/lessons/0004-mj.score.quiz.json",
+      "bytes": 2962,
+      "sha256": "02fb64ab9ad3153829820eb562dc7a8bbdacf8d252e9c5f580eed85f9791595d"
+    },
+    {
+      "path": "advanced/lessons/0005-mj.efficiency.md",
+      "bytes": 11985,
+      "sha256": "17a875212ce847b8cb885b7603bcc1013d6010a537e87a7598cd571b88ce562c"
+    },
+    {
+      "path": "advanced/lessons/0005-mj.efficiency.quiz.json",
+      "bytes": 2953,
+      "sha256": "ba4d9be806ddc6358c874c1d85b4f447fb2069ac00d99ed6ec7566343b4fcc15"
+    },
+    {
+      "path": "advanced/lessons/0006-mj.safety.md",
+      "bytes": 11654,
+      "sha256": "2ec1b4ecfec4e82f42988caf5965f505542e2fe984ce06c5d4526bc1fbfcbd20"
+    },
+    {
+      "path": "advanced/lessons/0006-mj.safety.quiz.json",
+      "bytes": 3104,
+      "sha256": "7bff8aa6dfea0f72b96e7ffa9aadfcc450e6b2b9680abda7203db42342f295c6"
+    },
+    {
+      "path": "advanced/lessons/0007-mj.lab1.md",
+      "bytes": 4493,
+      "sha256": "dc085ddd30b0b41aa14ef3eff49bd38892f8a945c82a5b72ad5b8c230a866269"
+    },
+    {
+      "path": "advanced/lessons/0008-mj.shapes.md",
+      "bytes": 10935,
+      "sha256": "ee1ebd79f03474665c68cfaab29f48a6dc2e182756a0c22e5c307f9bb2cc3ff7"
+    },
+    {
+      "path": "advanced/lessons/0008-mj.shapes.quiz.json",
+      "bytes": 2900,
+      "sha256": "27ef5a8f02def5442adc82e754c39a2527e6ebbd89719dcfd25dc1209abe4521"
+    },
+    {
+      "path": "advanced/lessons/0009-mj.calls.md",
+      "bytes": 11019,
+      "sha256": "035cea66e16817d155930f56d49b90d40ed51ab23101f336fe786a57ecad35c6"
+    },
+    {
+      "path": "advanced/lessons/0009-mj.calls.quiz.json",
+      "bytes": 3296,
+      "sha256": "9d41055dfbf7bef881fab384c18b454ce6798616081f63f9c00b7a1f3d3978bc"
+    },
+    {
+      "path": "advanced/lessons/0010-mj.riichi.md",
+      "bytes": 11364,
+      "sha256": "93e7fca150cff448ad64cb5a096eb322d452f7ca44c88eeb5d3b006370f01cd7"
+    },
+    {
+      "path": "advanced/lessons/0010-mj.riichi.quiz.json",
+      "bytes": 3318,
+      "sha256": "e3f3c5cc6872b0afb067e38e67452188cb9920e14dbd4679a36e7785a1e9dd9c"
+    },
+    {
+      "path": "advanced/lessons/0011-mj.defense.md",
+      "bytes": 11481,
+      "sha256": "d539fb3e35bab4bf746cec9690a924b4925c00d82782e43936fdbac46cfc6e30"
+    },
+    {
+      "path": "advanced/lessons/0011-mj.defense.quiz.json",
+      "bytes": 3362,
+      "sha256": "f87200109623a0cd694a3f3a00c4a6158745d5d333484562cb4aa3a27bdfc241"
+    },
+    {
+      "path": "advanced/lessons/0012-mj.lab2.md",
+      "bytes": 4123,
+      "sha256": "a77a13ad656a3f92bdcb1878dbde3dec562c71c72dc2f130b9586f6358c97c50"
+    },
+    {
+      "path": "advanced/lessons/0013-mj.pushpull.md",
+      "bytes": 11823,
+      "sha256": "f6c787c577f3af10626bbec83305e186d288cfb3465dde4002d1e0516a092e93"
+    },
+    {
+      "path": "advanced/lessons/0013-mj.pushpull.quiz.json",
+      "bytes": 3590,
+      "sha256": "e11e2301b93db98a2ab072e4761da58c28040c0635299b952f80330cfd2c037e"
+    },
+    {
+      "path": "advanced/lessons/0014-mj.placement.md",
+      "bytes": 11501,
+      "sha256": "62e4adadb043d370112dcf876e202decd5f1658e6e3980efaf95c50773ada5d2"
+    },
+    {
+      "path": "advanced/lessons/0014-mj.placement.quiz.json",
+      "bytes": 3187,
+      "sha256": "0123dc4579666003056b3ac04b35ea3cd389709f873ea5b67745a6f3849502f6"
+    },
+    {
+      "path": "advanced/lessons/0015-mj.reading.md",
+      "bytes": 11799,
+      "sha256": "dd414d3b8e12b11c4076bb7c783f5459212fb68e6b02258eb08c8e13f93723d6"
+    },
+    {
+      "path": "advanced/lessons/0015-mj.reading.quiz.json",
+      "bytes": 3254,
+      "sha256": "282508d6705947497b01d1c935cc9f4ade182f6da577019e328fac2a8fc1283d"
+    },
+    {
+      "path": "advanced/lessons/0016-mj.review.md",
+      "bytes": 13233,
+      "sha256": "edb44a7d97a7dc70c927d84032fa9d7773acb36d254eaef658b2075ac706c73c"
+    },
+    {
+      "path": "advanced/lessons/0016-mj.review.quiz.json",
+      "bytes": 3339,
+      "sha256": "e4442c6fa9ec64ea44ba8fbc48eca77f27cc162fb88ff535c62f7ca880b0aa86"
+    },
+    {
+      "path": "advanced/lessons/0017-mj.lab3.md",
+      "bytes": 4220,
+      "sha256": "5d92702b309f8763030003a2313c46d1f4e11e944de5f2bac16639002c688a97"
+    },
+    {
+      "path": "advanced/lessons/0018-mj.opening.md",
+      "bytes": 10794,
+      "sha256": "44b86f0b726e8068a50626e035232ee3a1de3a4048ed4fc4886dff6eea97edfa"
+    },
+    {
+      "path": "advanced/lessons/0018-mj.opening.quiz.json",
+      "bytes": 3334,
+      "sha256": "f546b27651be428660f05faa3ec8cf667ee5726e8ec2048cd486c93b3578e9f9"
+    },
+    {
+      "path": "advanced/lessons/0019-mj.pairs.md",
+      "bytes": 10485,
+      "sha256": "664719ccd3a687a5b412c0c831cff8c9d9afedf10675c2c12f9a226abaaded21"
+    },
+    {
+      "path": "advanced/lessons/0019-mj.pairs.quiz.json",
+      "bytes": 3289,
+      "sha256": "ec1628f694ff0fd79a5781a0c066d6739cfa4432be8559e28e78ad638b2982a6"
+    },
+    {
+      "path": "advanced/lessons/0020-mj.flush.md",
+      "bytes": 10067,
+      "sha256": "b08583452aff8f0c3557c6e9485ac160dc79fb02997b5c043119ce2cb8526b77"
+    },
+    {
+      "path": "advanced/lessons/0020-mj.flush.quiz.json",
+      "bytes": 3240,
+      "sha256": "7d8bbe6f6a2a5498bee1b59e43ed101573cd72cb09b041d7843d3f24b726186f"
+    },
+    {
+      "path": "advanced/lessons/0021-mj.value.md",
+      "bytes": 9850,
+      "sha256": "f7ef1375b306d35e9fcfb4503755e8166ce37b53f98566d1e05ad74ff9effb4f"
+    },
+    {
+      "path": "advanced/lessons/0021-mj.value.quiz.json",
+      "bytes": 3517,
+      "sha256": "c1a50f2b8f0135b30338b63fed3b757618f193a2510996d6c02961b088be0902"
+    },
+    {
+      "path": "advanced/lessons/0022-mj.endgame.md",
+      "bytes": 11250,
+      "sha256": "baa0193fa7e348170ebc836e32c4e07cf6989b40aa11b24bf55edbc92826a836"
+    },
+    {
+      "path": "advanced/lessons/0022-mj.endgame.quiz.json",
+      "bytes": 3641,
+      "sha256": "33b4ca3fe470689341a2da60797af650f3f6918343dd154810efe67e2df188f2"
+    },
+    {
+      "path": "advanced/lessons/0023-mj.meldreading.md",
+      "bytes": 11235,
+      "sha256": "53951f1025352bf21154ff070b0f18229cb32166bc4f33ade0827fe9f5a8de1a"
+    },
+    {
+      "path": "advanced/lessons/0023-mj.meldreading.quiz.json",
+      "bytes": 2900,
+      "sha256": "36b6a3118c8b07eb9926df452fad22b79b5531226d55328bfd2ad089a001e588"
+    },
+    {
+      "path": "advanced/RESOURCES.md",
+      "bytes": 14218,
+      "sha256": "3928e62961c1b9befb67f560e46aa0057c58e8f5e1510d51d2988d804054e2f8"
+    },
+    {
+      "path": "advanced/GLOSSARY.md",
+      "bytes": 6343,
+      "sha256": "e7ace1977818e1b473db70680af1f9349869d6492242bef202ba5a3030543f56"
+    },
+    {
+      "path": "advanced/lab/0007-基础篇/任务单.md",
+      "bytes": 3264,
+      "sha256": "655a471c05192db8f162e51e2030615fd12728d0a51495645051fe51ed276716"
+    },
+    {
+      "path": "advanced/lab/0007-基础篇/作答/牌例册.md",
+      "bytes": 533,
+      "sha256": "8f24ee8b6177bbfd1d5fcc71b40c65558661060572dbf38782a9e24c7daa55d3"
+    },
+    {
+      "path": "advanced/lab/0007-基础篇/深化补充/任务单.md",
+      "bytes": 5685,
+      "sha256": "42dadcaa280cfd977ef464bd3ffb2c6546ff702c97f5df83e69665494ba0ef15"
+    },
+    {
+      "path": "advanced/lab/0007-基础篇/深化补充/作答/深化册.md",
+      "bytes": 1054,
+      "sha256": "ae3838250a33e5edbb6ab7780deee3870abdb1e2a4e0c401eb9c5f0d4b985860"
+    },
+    {
+      "path": "advanced/lab/0007-基础篇/深化补充/自查清单.md",
+      "bytes": 2494,
+      "sha256": "646b6fda0a773b00eb32bca65346ef9ae46830fb1751807f5e6b91f714fc47ea"
+    },
+    {
+      "path": "advanced/lab/0012-进阶篇/任务单.md",
+      "bytes": 2787,
+      "sha256": "20d60d901c717f869c5db08f812f145a83edc53c56e12d9c55b3c5347e97dd06"
+    },
+    {
+      "path": "advanced/lab/0012-进阶篇/作答/牌例册.md",
+      "bytes": 493,
+      "sha256": "05f026cb47239621fa2d5651be2976d0c7c4ead0df7e63d06452c242cb0ac018"
+    },
+    {
+      "path": "advanced/lab/0012-进阶篇/深化补充/任务单.md",
+      "bytes": 4770,
+      "sha256": "8bc1a371fc4680805b4d32e469891139a870a46cd5b3c9857094ec51a88f7f12"
+    },
+    {
+      "path": "advanced/lab/0012-进阶篇/深化补充/作答/深化册.md",
+      "bytes": 937,
+      "sha256": "911ffdabc9aaad77898dee0ee664c7e6b5adbedab3d8f8b54f6e74cfe0675325"
+    },
+    {
+      "path": "advanced/lab/0012-进阶篇/深化补充/自查清单.md",
+      "bytes": 2077,
+      "sha256": "c98d99f696353d4aadaca0bec14f79272232953ed6aed594d840eab63394080a"
+    },
+    {
+      "path": "advanced/lab/0017-高手篇/任务单.md",
+      "bytes": 3384,
+      "sha256": "0a523c47b663a06bb4a744502c0def1dd0b855c2cfc3221a2418a8e18629b9d6"
+    },
+    {
+      "path": "advanced/lab/0017-高手篇/作答/牌例册.md",
+      "bytes": 493,
+      "sha256": "5298dd398b0632e6c62246d5a2aa86ddf2a20deeb4e90ef97e30c87fa5ebdd14"
+    },
+    {
+      "path": "advanced/lab/0017-高手篇/深化补充/任务单.md",
+      "bytes": 5721,
+      "sha256": "45591857fb8c3d434d33265d3aa50ee8b5ce0c8def3cbad4219db8cb572a3c52"
+    },
+    {
+      "path": "advanced/lab/0017-高手篇/深化补充/作答/深化册.md",
+      "bytes": 927,
+      "sha256": "97b538daf8e2a947b8a2f8fa0c431aac0a99fc5b735c9139334b840d8124e133"
+    },
+    {
+      "path": "advanced/lab/0017-高手篇/深化补充/自查清单.md",
+      "bytes": 2177,
+      "sha256": "193853b633deaad73f7b57515caa7fc1a4f9458779b55d55d0d5343260510319"
+    },
+    {
+      "path": "advanced/lab/README.md",
+      "bytes": 6034,
+      "sha256": "a2c8257ce108a933c80fb15dc6688096c87440039e62e330cbc81f3218b9e5b7"
+    },
+    {
+      "path": "advanced/lab/solutions/0007-基础篇/作答/牌例册.md",
+      "bytes": 1691,
+      "sha256": "3bea8d0a54f29fe0cde0730ddf7e72444f8ede3e230a87154b5498fec33b3490"
+    },
+    {
+      "path": "advanced/lab/solutions/0007-基础篇/参考解说明.md",
+      "bytes": 535,
+      "sha256": "48672cab537a3a731eb4cff867883371fac61819e1cce6f92bdd8ad5fcb66b91"
+    },
+    {
+      "path": "advanced/lab/solutions/0007-基础篇/深化补充/作答/深化册.md",
+      "bytes": 5155,
+      "sha256": "06246305d6de6ad3141e445194385f5bc1e1933b54b0db6b599ad56e546b9302"
+    },
+    {
+      "path": "advanced/lab/solutions/0007-基础篇/深化补充/参考解说明.md",
+      "bytes": 584,
+      "sha256": "58946a0ecdfcb57d4eff07ac9abb2b894fc4b3a752a83036176daddf34f9f75e"
+    },
+    {
+      "path": "advanced/lab/solutions/0012-进阶篇/作答/牌例册.md",
+      "bytes": 1838,
+      "sha256": "9ae73a99000890d6f31eda5dae8f49419c05f90f15fa9f6f886e6de46a05910b"
+    },
+    {
+      "path": "advanced/lab/solutions/0012-进阶篇/参考解说明.md",
+      "bytes": 535,
+      "sha256": "e6abbe5d6012b30a7ad9789668949f8ea457ca2c11731cfff9c02b94625eb36b"
+    },
+    {
+      "path": "advanced/lab/solutions/0012-进阶篇/深化补充/作答/深化册.md",
+      "bytes": 5040,
+      "sha256": "6ae9dfb70c6e0a328bf87699bbf09adadc15183e8411a7578bf8306a9b84d8b8"
+    },
+    {
+      "path": "advanced/lab/solutions/0012-进阶篇/深化补充/参考解说明.md",
+      "bytes": 584,
+      "sha256": "2be43a27f49d93349e151dd9769308ae6ec0025885ae893e778600e66e7201eb"
+    },
+    {
+      "path": "advanced/lab/solutions/0017-高手篇/作答/牌例册.md",
+      "bytes": 2983,
+      "sha256": "3f97ec06cf01e99c8ef3774dbc259dbf2db737e00185926b59d6edb7e65222fa"
+    },
+    {
+      "path": "advanced/lab/solutions/0017-高手篇/参考解说明.md",
+      "bytes": 535,
+      "sha256": "d56c399362370f2fdc0f74d807cda97b23ff3d4b60994d81cdf455f0462f6b60"
+    },
+    {
+      "path": "advanced/lab/solutions/0017-高手篇/深化补充/作答/深化册.md",
+      "bytes": 6286,
+      "sha256": "ef94c3c290e9a9cee95414d3b33948c82b702b18e40d7c69555f2d2900ebffc4"
+    },
+    {
+      "path": "advanced/lab/solutions/0017-高手篇/深化补充/参考解说明.md",
+      "bytes": 584,
+      "sha256": "a1371d435c621983777ce9b0c6fcd106e86fca68eb4375cfa8f4a3d8d190dca8"
+    },
+    {
+      "path": "advanced/lab/solutions/深化答案总册.md",
+      "bytes": 16636,
+      "sha256": "d97418d65d3ef6b28a327ee85d036eefebcf783abecfc727a04579a308b82395"
+    },
+    {
+      "path": "advanced/lab/solutions/答案总册.md",
+      "bytes": 6675,
+      "sha256": "2e28450bbc260ab6f84f61eb99e297a3be48c290c59f59a47c8d2ca369e7d202"
+    },
+    {
+      "path": "advanced/lab/深化练习总册.md",
+      "bytes": 19456,
+      "sha256": "102e3be983986066ce720eb303043bc0c4f57643fdc2e6e0ceb4fff3273ab383"
+    },
+    {
+      "path": "advanced/lab/牌例练习册.md",
+      "bytes": 11221,
+      "sha256": "315f7e1f71ce115eddfa52ef281dad6316125d49e2182c8fdce1c84df90f37c0"
+    },
+    {
+      "path": "advanced/sources/bilibili-recommendations-710553260703875089.md",
+      "bytes": 23448,
+      "sha256": "0502e71dc51e6bb58bbd5e34e574443656b7b377ff0a151a021ef98649c63d4c"
+    },
+    {
+      "path": "advanced/sources/new-chapter-source-notes.md",
+      "bytes": 9356,
+      "sha256": "43237c86a1b45b347ba001f70476ed4b3926b363c74aa28415298f500ef4e826"
+    },
+    {
+      "path": "advanced/sources/recommendations-verified-notes.md",
+      "bytes": 6276,
+      "sha256": "05628750ac9bdc2f3be16f3cca4aef2d97f03e9d10d5bd13d5640d3b5c931684"
+    },
+    {
+      "path": "advanced/sources/riichi-book-i-ch03.md",
+      "bytes": 64418,
+      "sha256": "668aa55c21deed1a4000febddaae8436e03e27d9f9298e791aea46d3ff20192f"
+    },
+    {
+      "path": "advanced/sources/riichi-book-i-ch04.md",
+      "bytes": 35669,
+      "sha256": "793ad784dedc9d5d08b03da758bd87baf6f564249d6101e4161296e4b001d999"
+    },
+    {
+      "path": "advanced/sources/riichi-book-i-ch05.md",
+      "bytes": 45803,
+      "sha256": "87513c2b4564998e2097e85165ffe9fdec411baa8f19faee81a5c8375c21e6d1"
+    },
+    {
+      "path": "advanced/sources/riichi-book-i-ch06.md",
+      "bytes": 39823,
+      "sha256": "f52e3450970b30ea1f631445b7cd1027acb6efb123efe81c6e45795ba6f6c860"
+    },
+    {
+      "path": "advanced/sources/riichi-book-i-ch07.md",
+      "bytes": 45210,
+      "sha256": "17be5bc1e77d65ca414bb47eca0bfb6bcaf5082456e761724731c6c762316370"
+    },
+    {
+      "path": "advanced/sources/riichi-book-i-ch08.md",
+      "bytes": 45579,
+      "sha256": "46f4273efdb6e6759a89a67af38b138a5c398b527b11012036f054d9f32518d8"
+    },
+    {
+      "path": "advanced/sources/riichi-book-i-ch09.md",
+      "bytes": 30434,
+      "sha256": "63a03f399d6bd81d5e05ab6d0eeda84646e656495d180ad9a5a83077b66b0f25"
+    },
+    {
+      "path": "advanced/sources/riichi-book-i-ch10.md",
+      "bytes": 24120,
+      "sha256": "f0510e4d8e382cabe3a2d5402e9cf7687ea83e9a37b04df2d23d0d6bdfdfef17"
+    },
+    {
+      "path": "advanced/sources/tenhou-manual.md",
+      "bytes": 61755,
+      "sha256": "b5416228291c3e6b05db44e7347ff068b7eb2605509c473944cf5770a059ede0"
+    },
+    {
+      "path": "advanced/assets/img/pool/向听数-进张-候选比较-self-01.png",
+      "bytes": 68947,
+      "sha256": "22532786b017f3046a252ce64739788df97f9959fa1de057e47b78bae20c0c40"
+    },
+    {
+      "path": "advanced/assets/img/pool/役-计分-支付结构-self-01.png",
+      "bytes": 70248,
+      "sha256": "af0d40c8ec34f83f1062ff63396563831664754bebeeaba415ebbbe60510aca2"
+    },
+    {
+      "path": "advanced/assets/img/pool/役-路线-门前副露-self-01.png",
+      "bytes": 65745,
+      "sha256": "0e58267605bf1d0759fb98c9a57a7c4745c11fed2097c37a7bb33619c8796557"
+    },
+    {
+      "path": "advanced/assets/img/pool/押引-复盘-训练循环-self-01.png",
+      "bytes": 76450,
+      "sha256": "16dd0a9534f594644cccaf0b8c10771df6a6a63dc496fa2ed61237a14cac4d96"
+    },
+    {
+      "path": "advanced/assets/img/pool/押引-条件-比较框架-self-01.png",
+      "bytes": 76112,
+      "sha256": "78a8896cf26ef378baaee329760193e5a7f10baf16a8a2f33e3fdb8696ccde68"
+    },
+    {
+      "path": "advanced/assets/img/pool/押引-点差-支付对象-self-01.png",
+      "bytes": 64804,
+      "sha256": "008a61966b115eda23992496d18340d1928a0c95cd35f73e475511a961936cd6"
+    },
+    {
+      "path": "advanced/assets/img/pool/数牌-摸打-整场目标-self-01.png",
+      "bytes": 83459,
+      "sha256": "a0400c1d08d5617126a2c0acb547fd45cdc930b7eb3d06887a963a57be8edea2"
+    },
+    {
+      "path": "advanced/assets/img/pool/现物-对象-推断边界-self-01.png",
+      "bytes": 70591,
+      "sha256": "757d205b003efe852a76bc78eb975f002a208a948a783287b87ddb1e9716f45c"
+    },
+    {
+      "path": "advanced/assets/img/pool/现物-弃和-连续更新-self-01.png",
+      "bytes": 86704,
+      "sha256": "961a55373ef6719252e9d930b929990ba854bcdbe320bf5c87cbe293739e89c7"
+    },
+    {
+      "path": "advanced/assets/img/pool/现物-牌河-证据分层-self-01.png",
+      "bytes": 81325,
+      "sha256": "6f9253e8ca5afe9742c609d3f2506d59a01c035d7dbf0dec09a76dc63685f135"
+    },
+    {
+      "path": "advanced/assets/img/pool/立直-选择-代价收益-self-01.png",
+      "bytes": 70027,
+      "sha256": "3481c62bfe648a04301eb818a955e892d611a21c951ff193796ffff97a93ea25"
+    },
+    {
+      "path": "advanced/assets/img/pool/进张-复合形-分支去重-self-01.png",
+      "bytes": 68195,
+      "sha256": "2c37ec5b7a6b096728c0ed7d29a0566f8a6b6a1c31b0c2409d54063991215ab8"
+    },
+    {
+      "path": "advanced/assets/img/pool/门前-鸣牌-四项交换-self-01.png",
+      "bytes": 70607,
+      "sha256": "f767e74c076d0ac9e5e83386cb6ce29ca5042d8fd148d4254100074f3d3abf0f"
+    },
+    {
+      "path": "advanced/assets/img/pool/面子-和牌-合法检查-self-01.png",
+      "bytes": 67009,
+      "sha256": "7ab8c9147d2564eae742b85d7b2b4ad0b73241ffd1ef93a377b147f648e83f89"
+    }
+  ],
+  "texCommands": {
+    "thispagestyle": 1,
+    "vspace": 22,
+    "sffamily": 1,
+    "small": 6,
+    "bfseries": 2,
+    "color": 2,
+    "quad": 8,
+    "par": 34,
+    "fontsize": 2,
+    "selectfont": 2,
+    "large": 1,
+    "hand": 8,
+    "mt": 27,
+    "sep": 17,
+    "pt": 21,
+    "st": 24,
+    "redzt": 7,
+    "zt": 8,
+    "smalltext": 20,
+    "begin": 45,
+    "textbf": 98,
+    "\\": 44,
+    "subsection": 48,
+    "noindent": 15,
+    "pageref": 9,
+    "vfill": 2,
+    "whitezt": 1,
+    "greenzt": 1,
+    "key": 8,
+    "notation": 51,
+    "flowbox": 5,
+    ",": 35,
+    "[": 1,
+    "boxed": 1,
+    "text": 2,
+    "qquad": 1,
+    "href": 3
+  },
+  "chapters": [
+    {
+      "id": "initial-cover",
+      "title": "扉页 · 这本指南怎么读",
+      "source": "initial/main.tex",
+      "sha256Html": "51c81957c1cb87599026be74fab9692024cadd9ad87b2591528e0756f064a1ae",
+      "textCharacters": 440
+    },
+    {
+      "id": "initial-tiles",
+      "title": "认识一副牌：34 种，通常共 136 张",
+      "source": "initial/main.tex",
+      "sha256Html": "58b528887f90061a135616fe7979db54841aba2b6b9f30cb68cc934689366196",
+      "textCharacters": 540
+    },
+    {
+      "id": "initial-turn",
+      "title": "一局怎么进行：摸一张，打一张",
+      "source": "initial/main.tex",
+      "sha256Html": "67b170122f90f73d5b57a2fa77322e83e02c7ae0489e6bcb9c61795f8eb1433b",
+      "textCharacters": 662
+    },
+    {
+      "id": "initial-shape",
+      "title": "怎么凑牌：四组面子 + 一对雀头",
+      "source": "initial/main.tex",
+      "sha256Html": "0f05f34b384a5b7baab45546bd9aba16bb85ca34a4649a90a59d0f7cf5154564",
+      "textCharacters": 664
+    },
+    {
+      "id": "initial-legal",
+      "title": "怎样才算合法胡牌",
+      "source": "initial/main.tex",
+      "sha256Html": "6e8482f859808f2daa76130fb8aeb50f5db0eeec6c09ea4d8cbcf49c34d8c560",
+      "textCharacters": 699
+    },
+    {
+      "id": "initial-riichi",
+      "title": "立直：给门前听牌加上一个役",
+      "source": "initial/main.tex",
+      "sha256Html": "fc1ebd799679ffdcabca2a68cb63db579ec15f27932eb843766cc49bd9a032d5",
+      "textCharacters": 675
+    },
+    {
+      "id": "initial-yaku",
+      "title": "先记住这些役，就足够开始玩",
+      "source": "initial/main.tex",
+      "sha256Html": "3573a9e08f1e2b91215b6f7893810113c7d4735e0413780649c1c8f345742f99",
+      "textCharacters": 695
+    },
+    {
+      "id": "initial-calls",
+      "title": "吃、碰、杠与宝牌",
+      "source": "initial/main.tex",
+      "sha256Html": "699b19b0447064682ca0f5860c8d9273952a5dffee6be374ebe43bc6d1360c35",
+      "textCharacters": 707
+    },
+    {
+      "id": "initial-efficiency",
+      "title": "基础打法：先让手牌更容易听牌",
+      "source": "initial/main.tex",
+      "sha256Html": "916347df55fda708ec9a20c8deca1e67c5722c9b9a5e47d80b8454f47fde80f8",
+      "textCharacters": 708
+    },
+    {
+      "id": "initial-defense",
+      "title": "基础防守：有人进攻，就重新估风险",
+      "source": "initial/main.tex",
+      "sha256Html": "31e77c99e798bcba4f1a05ac61da553b29f05061ed60d02e42a880b432077344",
+      "textCharacters": 701
+    },
+    {
+      "id": "initial-score",
+      "title": "点数怎么看：先懂番，再慢慢学符",
+      "source": "initial/main.tex",
+      "sha256Html": "a0d4c3258d74ef1c82e81d3d09655d0d9fe25ffe9db3e1a8e73122e788dda4dd",
+      "textCharacters": 849
+    },
+    {
+      "id": "initial-exampleplay",
+      "title": "跟着一手牌，走完“听牌 → 和牌”",
+      "source": "initial/main.tex",
+      "sha256Html": "7451a48ca1b7456f30e2c696a181276b52d88e85a337c1c00efcfeed4f5ca6c8",
+      "textCharacters": 719
+    },
+    {
+      "id": "initial-hantable",
+      "title": "胡牌番数速查表（一）：1 番与 2 番",
+      "source": "initial/main.tex",
+      "sha256Html": "044137f275e9ab0a86913d6cf5402f4935dd2e290361081f612b8496f3baa320",
+      "textCharacters": 798
+    },
+    {
+      "id": "initial-yakuman",
+      "title": "胡牌番数速查表（二）：高番与役满",
+      "source": "initial/main.tex",
+      "sha256Html": "dd9708b130cc2139be76a071d43ff27df91f9e7ac6d8dbae198a5ef6f24b4faa",
+      "textCharacters": 789
+    },
+    {
+      "id": "initial-cheat",
+      "title": "一页速查：每次出牌前看这里",
+      "source": "initial/main.tex",
+      "sha256Html": "deed6015ae4f834f664345042ad53d4c367cd79cfdeb3aeb48e32f0e2057031c",
+      "textCharacters": 858
+    },
+    {
+      "id": "advanced-mj.intro",
+      "title": "绪论：和牌之外",
+      "source": "lessons/0001-mj.intro.md",
+      "sha256Html": "f7d9eb30e550b15698dfc2d245f20ee2e02ced7f3182adfe475e51fdb24516a1",
+      "textCharacters": 6300
+    },
+    {
+      "id": "advanced-mj.win",
+      "title": "牌组与合法和牌",
+      "source": "lessons/0002-mj.win.md",
+      "sha256Html": "c76f21b19c2fe770aba632d4d4dbeb4c78f81d0e94289a7c57bd100dbc25c39f",
+      "textCharacters": 6347
+    },
+    {
+      "id": "advanced-mj.yaku",
+      "title": "役与手牌路线",
+      "source": "lessons/0003-mj.yaku.md",
+      "sha256Html": "bca12a295ead3d3a3cd9c8402a919bd8a5d30356ee8e813e0e547dbadd749dc4",
+      "textCharacters": 6100
+    },
+    {
+      "id": "advanced-mj.score",
+      "title": "符翻与得点",
+      "source": "lessons/0004-mj.score.md",
+      "sha256Html": "e28b3051e689318fe2b250dfee81394b14fbd23cab1a8e66ed6648d77e898cd8",
+      "textCharacters": 6544
+    },
+    {
+      "id": "advanced-mj.efficiency",
+      "title": "向听与进张",
+      "source": "lessons/0005-mj.efficiency.md",
+      "sha256Html": "98397d2be2b6ae9a68e4bbe7ae12d40557f676e59473ea146c7e7bb0ed5ed325",
+      "textCharacters": 6060
+    },
+    {
+      "id": "advanced-mj.safety",
+      "title": "现物与安全边界",
+      "source": "lessons/0006-mj.safety.md",
+      "sha256Html": "20154a06034803c2265b1162513431d0d1a468c1bd3e406f31cc5299a84c8175",
+      "textCharacters": 5576
+    },
+    {
+      "id": "advanced-mj.lab1",
+      "title": "实验一：基础牌例册",
+      "source": "lessons/0007-mj.lab1.md",
+      "sha256Html": "9fce7e0f81ab79b3101704dee5a58ceed13dbb299fd317957fd8ed6c2c2b2de5",
+      "textCharacters": 2131
+    },
+    {
+      "id": "advanced-mj.shapes",
+      "title": "复合牌形与改良",
+      "source": "lessons/0008-mj.shapes.md",
+      "sha256Html": "8eb598bedef8eb092a227e131f393574b61c29a1cf07c5dd0abba957ef8db464",
+      "textCharacters": 5679
+    },
+    {
+      "id": "advanced-mj.calls",
+      "title": "鸣牌与价值交换",
+      "source": "lessons/0009-mj.calls.md",
+      "sha256Html": "7a1976e3b5a61ccfe1c1cc455092aa36baa5f2197c1fd761d6dc6ef9601ebc35",
+      "textCharacters": 5673
+    },
+    {
+      "id": "advanced-mj.riichi",
+      "title": "立直与默听",
+      "source": "lessons/0010-mj.riichi.md",
+      "sha256Html": "eca6b7de4c02868bdb73e7ec3867273f04a99d602a58c3f80cd8a4819eddab0b",
+      "textCharacters": 5865
+    },
+    {
+      "id": "advanced-mj.defense",
+      "title": "弃和与多家防守",
+      "source": "lessons/0011-mj.defense.md",
+      "sha256Html": "735bed2ae730fdbffeafaf8e04011e846becbe7cbd9ac567f47f16e3eae54436",
+      "textCharacters": 5604
+    },
+    {
+      "id": "advanced-mj.lab2",
+      "title": "实验二：进阶决策册",
+      "source": "lessons/0012-mj.lab2.md",
+      "sha256Html": "96737de01e1c3005b4aabf9703a247b26541efe1a63795797bcbc81d29daf12c",
+      "textCharacters": 1936
+    },
+    {
+      "id": "advanced-mj.pushpull",
+      "title": "押引的条件判断",
+      "source": "lessons/0013-mj.pushpull.md",
+      "sha256Html": "e3854110024115d1e2c67fc80ce24c41552d53b348b4a11acfb5d86300e35df5",
+      "textCharacters": 6031
+    },
+    {
+      "id": "advanced-mj.placement",
+      "title": "点差与排名条件",
+      "source": "lessons/0014-mj.placement.md",
+      "sha256Html": "a08e9492fcaeab7604cd6750166f3576c58aeb517b8a8feb878b679c7a626eb9",
+      "textCharacters": 6489
+    },
+    {
+      "id": "advanced-mj.reading",
+      "title": "牌河推断的边界",
+      "source": "lessons/0015-mj.reading.md",
+      "sha256Html": "ee91fbd2122a5e6e29fd1bb0c947b33e4d1a79627f80ee1302146ab0bbbf7f19",
+      "textCharacters": 5803
+    },
+    {
+      "id": "advanced-mj.review",
+      "title": "复盘与持续训练",
+      "source": "lessons/0016-mj.review.md",
+      "sha256Html": "8bd71a30bacecdbeccff9f551229e88fb6abf9176946114b6f2970b89de8e51c",
+      "textCharacters": 6289
+    },
+    {
+      "id": "advanced-mj.lab3",
+      "title": "实验三：高手研修册",
+      "source": "lessons/0017-mj.lab3.md",
+      "sha256Html": "873c26349b2c0825e9940b9172e9c150f0e2da3a1883d86d6ddd22febe7fd872",
+      "textCharacters": 1923
+    },
+    {
+      "id": "advanced-mj.opening",
+      "title": "序盘计划与路线转向",
+      "source": "lessons/0018-mj.opening.md",
+      "sha256Html": "15e33d5cfa0283b3f78c317934f073341d5e5cc362c5eea48fab691514711cbd",
+      "textCharacters": 5542
+    },
+    {
+      "id": "advanced-mj.pairs",
+      "title": "对子手的路线竞争",
+      "source": "lessons/0019-mj.pairs.md",
+      "sha256Html": "3169cd1572e646f56d0576df5e21b24e04ef72c22cdbeb11e2a676680c4a9c2b",
+      "textCharacters": 5499
+    },
+    {
+      "id": "advanced-mj.flush",
+      "title": "染手构筑与外色退路",
+      "source": "lessons/0020-mj.flush.md",
+      "sha256Html": "47ef8b2f14253a8e6d0304cb8b00b09b220eded25d5d7a8ae896694226078c7d",
+      "textCharacters": 5406
+    },
+    {
+      "id": "advanced-mj.value",
+      "title": "宝牌与手役增值",
+      "source": "lessons/0021-mj.value.md",
+      "sha256Html": "acd9367ac6a65898e74ef6e0a3d140be16493c65b9ccdd9bdc6bc0711503078d",
+      "textCharacters": 5485
+    },
+    {
+      "id": "advanced-mj.endgame",
+      "title": "终盘形听与流局收支",
+      "source": "lessons/0022-mj.endgame.md",
+      "sha256Html": "edd4400f6775a778b47030e5b1c16dd655af68840067930cdcb316dcc40db2b3",
+      "textCharacters": 6122
+    },
+    {
+      "id": "advanced-mj.meldreading",
+      "title": "副露结构与风险推断",
+      "source": "lessons/0023-mj.meldreading.md",
+      "sha256Html": "c497d9f4e5a95ae22a55904839618ca996c503f86afd8f639b3a43540860a6b2",
+      "textCharacters": 5620
+    },
+    {
+      "id": "advanced-resources",
+      "title": "资料来源与适用范围",
+      "source": "RESOURCES.md",
+      "sha256Html": "64566ab8ce1589148a0b71096f79cf2fded68f766a4311f4a2cf6926f6aab6cf",
+      "textCharacters": 6372
+    },
+    {
+      "id": "advanced-glossary",
+      "title": "完整术语表",
+      "source": "GLOSSARY.md",
+      "sha256Html": "68d8e577042e503eed9e00d3489f440e3b107945954da9e168302bc1f4e733d4",
+      "textCharacters": 2092
+    },
+    {
+      "id": "advanced-appendix-2",
+      "title": "0007-基础篇 / 任务单 · 实验一：基础牌例册",
+      "source": "lab/0007-基础篇/任务单.md",
+      "sha256Html": "67c1f2448f968036c8b795c5a6908bdb59573f345e6adfb09501e316dbc413fa",
+      "textCharacters": 1221
+    },
+    {
+      "id": "advanced-appendix-3",
+      "title": "0007-基础篇 / 作答 / 牌例册 · 作答页 · 实验一：基础牌例册",
+      "source": "lab/0007-基础篇/作答/牌例册.md",
+      "sha256Html": "41d04f7337afaa4206e9f7c8a1ae0bc29b1f3272afd984f9560e26c719e755cb",
+      "textCharacters": 289
+    },
+    {
+      "id": "advanced-appendix-4",
+      "title": "0007-基础篇 / 深化补充 / 任务单 · 实验一：基础牌例册 · 深化补充",
+      "source": "lab/0007-基础篇/深化补充/任务单.md",
+      "sha256Html": "de299eed6fa55759926d069d557e535c1471fa5905bd205b8b4c940477827afe",
+      "textCharacters": 2096
+    },
+    {
+      "id": "advanced-appendix-5",
+      "title": "0007-基础篇 / 深化补充 / 作答 / 深化册 · 实验一：基础牌例册 · 深化作答页",
+      "source": "lab/0007-基础篇/深化补充/作答/深化册.md",
+      "sha256Html": "67fd3e8beab54bda0a8a588abf830d5e1dd36b7f44ce59664fffc3f106d131b3",
+      "textCharacters": 518
+    },
+    {
+      "id": "advanced-appendix-6",
+      "title": "0007-基础篇 / 深化补充 / 自查清单 · 实验一：基础牌例册 · 深化自查",
+      "source": "lab/0007-基础篇/深化补充/自查清单.md",
+      "sha256Html": "8343d19fa0b8a9967fa0d9cbd9673253e6e8d1885e732110a3f2d6ae362c5cad",
+      "textCharacters": 846
+    },
+    {
+      "id": "advanced-appendix-7",
+      "title": "0012-进阶篇 / 任务单 · 实验二：进阶决策册",
+      "source": "lab/0012-进阶篇/任务单.md",
+      "sha256Html": "30bd643c1094d5447dad1ffa1916591d3d1dbfc937555c6864f1eda0aed0d674",
+      "textCharacters": 1038
+    },
+    {
+      "id": "advanced-appendix-8",
+      "title": "0012-进阶篇 / 作答 / 牌例册 · 作答页 · 实验二：进阶决策册",
+      "source": "lab/0012-进阶篇/作答/牌例册.md",
+      "sha256Html": "61c79a119b6f384729b540ef48d9b62d8731513ca567cf665652ef85a7785fad",
+      "textCharacters": 253
+    },
+    {
+      "id": "advanced-appendix-9",
+      "title": "0012-进阶篇 / 深化补充 / 任务单 · 实验二：进阶决策册 · 深化补充",
+      "source": "lab/0012-进阶篇/深化补充/任务单.md",
+      "sha256Html": "c63544752bd922ea8afc9b290219000a9d496aa8c0500a83bf862978fec49edb",
+      "textCharacters": 1782
+    },
+    {
+      "id": "advanced-appendix-10",
+      "title": "0012-进阶篇 / 深化补充 / 作答 / 深化册 · 实验二：进阶决策册 · 深化作答页",
+      "source": "lab/0012-进阶篇/深化补充/作答/深化册.md",
+      "sha256Html": "63bb2f52559e0ea5a0b5a9ea98266bbcc2e1c3e67e42d14932527fe829459112",
+      "textCharacters": 466
+    },
+    {
+      "id": "advanced-appendix-11",
+      "title": "0012-进阶篇 / 深化补充 / 自查清单 · 实验二：进阶决策册 · 深化自查",
+      "source": "lab/0012-进阶篇/深化补充/自查清单.md",
+      "sha256Html": "97b512ad505d6687914ff27951f63693d19b503060bffabda20281ce72336b5a",
+      "textCharacters": 703
+    },
+    {
+      "id": "advanced-appendix-12",
+      "title": "0017-高手篇 / 任务单 · 实验三：高手研修册",
+      "source": "lab/0017-高手篇/任务单.md",
+      "sha256Html": "e1d5ee39837a92b05de4749c02058dfccb737cee63709e1b2a08eb3efe16dc91",
+      "textCharacters": 1221
+    },
+    {
+      "id": "advanced-appendix-13",
+      "title": "0017-高手篇 / 作答 / 牌例册 · 作答页 · 实验三：高手研修册",
+      "source": "lab/0017-高手篇/作答/牌例册.md",
+      "sha256Html": "8f9d94e07217aea751cc1ec1c7a9bb837620b200f58f533c4b447969f4c4db62",
+      "textCharacters": 253
+    },
+    {
+      "id": "advanced-appendix-14",
+      "title": "0017-高手篇 / 深化补充 / 任务单 · 实验三：高手研修册 · 深化补充",
+      "source": "lab/0017-高手篇/深化补充/任务单.md",
+      "sha256Html": "1735d449902d42dd82feb0a63263d3a1d4c0d42118e930c332e273f26daf2f4d",
+      "textCharacters": 2137
+    },
+    {
+      "id": "advanced-appendix-15",
+      "title": "0017-高手篇 / 深化补充 / 作答 / 深化册 · 实验三：高手研修册 · 深化作答页",
+      "source": "lab/0017-高手篇/深化补充/作答/深化册.md",
+      "sha256Html": "c338a5cac8802fec4832c536f1f8ea88395b91b7245eeb59b33874dd5aa65eae",
+      "textCharacters": 457
+    },
+    {
+      "id": "advanced-appendix-16",
+      "title": "0017-高手篇 / 深化补充 / 自查清单 · 实验三：高手研修册 · 深化自查",
+      "source": "lab/0017-高手篇/深化补充/自查清单.md",
+      "sha256Html": "b9796b9d20af33d1126702af8433173d4e8c7335ec90999c10129f008533acfa",
+      "textCharacters": 735
+    },
+    {
+      "id": "advanced-appendix-17",
+      "title": "README · 四人立直麻将 · 练习册说明",
+      "source": "lab/README.md",
+      "sha256Html": "e325c51107dc170eab5b26ae95b9c88bddc339a6216a079d46ea9bb93af9bfad",
+      "textCharacters": 1885
+    },
+    {
+      "id": "advanced-appendix-18",
+      "title": "solutions / 0007-基础篇 / 作答 / 牌例册 · 参考作答 · 实验一：基础牌例册",
+      "source": "lab/solutions/0007-基础篇/作答/牌例册.md",
+      "sha256Html": "770fe6c914b8d05bb117b717ce3772c50eb2e3e58b781cac0327e91a404fc440",
+      "textCharacters": 703
+    },
+    {
+      "id": "advanced-appendix-19",
+      "title": "solutions / 0007-基础篇 / 参考解说明 · 实验一：基础牌例册 · 参考解使用",
+      "source": "lab/solutions/0007-基础篇/参考解说明.md",
+      "sha256Html": "4118658b7f736f62f914f26de1518f9cba696ed91c431d46a4031a36a52d0c03",
+      "textCharacters": 183
+    },
+    {
+      "id": "advanced-appendix-20",
+      "title": "solutions / 0007-基础篇 / 深化补充 / 作答 / 深化册 · 实验一：基础牌例册 · 深化参考作答",
+      "source": "lab/solutions/0007-基础篇/深化补充/作答/深化册.md",
+      "sha256Html": "0d43303bf6db70bf46fa31f2435c1fc7583280808f7619268fd9bcad1d6deaf2",
+      "textCharacters": 2031
+    },
+    {
+      "id": "advanced-appendix-21",
+      "title": "solutions / 0007-基础篇 / 深化补充 / 参考解说明 · 实验一：基础牌例册 · 深化参考解使用",
+      "source": "lab/solutions/0007-基础篇/深化补充/参考解说明.md",
+      "sha256Html": "092cc6b0ad34fb1810f256ca51105c6482c258ff9464f6d2882eb3cf7c401c19",
+      "textCharacters": 204
+    },
+    {
+      "id": "advanced-appendix-22",
+      "title": "solutions / 0012-进阶篇 / 作答 / 牌例册 · 参考作答 · 实验二：进阶决策册",
+      "source": "lab/solutions/0012-进阶篇/作答/牌例册.md",
+      "sha256Html": "2a1159a666d1f5a43924e321aa386f11b98062204ee4c3f69ba835366bd858d9",
+      "textCharacters": 754
+    },
+    {
+      "id": "advanced-appendix-23",
+      "title": "solutions / 0012-进阶篇 / 参考解说明 · 实验二：进阶决策册 · 参考解使用",
+      "source": "lab/solutions/0012-进阶篇/参考解说明.md",
+      "sha256Html": "358c720cabd91d596fa426997073b2a60559e4d35d3a46a917691bbbd5a5b756",
+      "textCharacters": 183
+    },
+    {
+      "id": "advanced-appendix-24",
+      "title": "solutions / 0012-进阶篇 / 深化补充 / 作答 / 深化册 · 实验二：进阶决策册 · 深化参考作答",
+      "source": "lab/solutions/0012-进阶篇/深化补充/作答/深化册.md",
+      "sha256Html": "c87075aa32725c0ea8e9372de483513538a0d554ba4348dc1b49b0a8d3ab0e28",
+      "textCharacters": 2008
+    },
+    {
+      "id": "advanced-appendix-25",
+      "title": "solutions / 0012-进阶篇 / 深化补充 / 参考解说明 · 实验二：进阶决策册 · 深化参考解使用",
+      "source": "lab/solutions/0012-进阶篇/深化补充/参考解说明.md",
+      "sha256Html": "a8a284251f5167eb001bea8ed03a71250d1dfad2d9c38ea14c5ef65663537f6c",
+      "textCharacters": 204
+    },
+    {
+      "id": "advanced-appendix-26",
+      "title": "solutions / 0017-高手篇 / 作答 / 牌例册 · 参考作答 · 实验三：高手研修册",
+      "source": "lab/solutions/0017-高手篇/作答/牌例册.md",
+      "sha256Html": "8349fef955a48bd361d773452ac695d3548215373e519255f80d97d8e47f178e",
+      "textCharacters": 1139
+    },
+    {
+      "id": "advanced-appendix-27",
+      "title": "solutions / 0017-高手篇 / 参考解说明 · 实验三：高手研修册 · 参考解使用",
+      "source": "lab/solutions/0017-高手篇/参考解说明.md",
+      "sha256Html": "8b2b6da40ffe1c220e05bd77b330e6c4a9f29e16863a4f895362e8875c5332f2",
+      "textCharacters": 183
+    },
+    {
+      "id": "advanced-appendix-28",
+      "title": "solutions / 0017-高手篇 / 深化补充 / 作答 / 深化册 · 实验三：高手研修册 · 深化参考作答",
+      "source": "lab/solutions/0017-高手篇/深化补充/作答/深化册.md",
+      "sha256Html": "92eff7d69c22ff6bf6cd0484fcc7b4f2ed15461245330951159d7b6ee238a45b",
+      "textCharacters": 2502
+    },
+    {
+      "id": "advanced-appendix-29",
+      "title": "solutions / 0017-高手篇 / 深化补充 / 参考解说明 · 实验三：高手研修册 · 深化参考解使用",
+      "source": "lab/solutions/0017-高手篇/深化补充/参考解说明.md",
+      "sha256Html": "d0ab769c7a94a2c841dcde3017853ba8555087ef353f45049f78db26a41d1b66",
+      "textCharacters": 204
+    },
+    {
+      "id": "advanced-appendix-30",
+      "title": "solutions / 深化答案总册 · 四人立直麻将 · 深化答案总册",
+      "source": "lab/solutions/深化答案总册.md",
+      "sha256Html": "3ae2cc255aa45555d6b0a4ab970c4e0c85500e7c707a8b9857bbb726c8102ff1",
+      "textCharacters": 6595
+    },
+    {
+      "id": "advanced-appendix-31",
+      "title": "solutions / 答案总册 · 四人立直麻将 · 参考答案总册",
+      "source": "lab/solutions/答案总册.md",
+      "sha256Html": "903dec5ee5ff87a44c1c4a2dc4459ebba1ec8a58d575abd4e060eaef2cd82d89",
+      "textCharacters": 2653
+    },
+    {
+      "id": "advanced-appendix-32",
+      "title": "深化练习总册 · 四人立直麻将 · 深化练习总册",
+      "source": "lab/深化练习总册.md",
+      "sha256Html": "3ac96d9ed95de521821ef54a159fc26c7dfc2cd5df5987bc07b23070c5327c48",
+      "textCharacters": 7552
+    },
+    {
+      "id": "advanced-appendix-33",
+      "title": "牌例练习册 · 四人立直麻将 · 牌例练习册",
+      "source": "lab/牌例练习册.md",
+      "sha256Html": "273b2f353c97997446369d1acc5fbe9bfee3e437bf80172a6603efee0ca65a01",
+      "textCharacters": 4374
+    },
+    {
+      "id": "advanced-appendix-34",
+      "title": "日麻推荐帖核对摘要与书目索引",
+      "source": "sources/bilibili-recommendations-710553260703875089.md",
+      "sha256Html": "5aea6b8f41e58bd3ff5594d2ed66c4839a7b9b0a0d20ee44a026d1c7eedde921",
+      "textCharacters": 5159
+    },
+    {
+      "id": "advanced-appendix-35",
+      "title": "新专题技术来源核对摘记（原创）",
+      "source": "sources/new-chapter-source-notes.md",
+      "sha256Html": "b48d1b2d14972e1b39ec5b019cb22ded864a3d32bd7c31e80275a79a88f7229d",
+      "textCharacters": 3672
+    },
+    {
+      "id": "advanced-appendix-36",
+      "title": "推荐资料核对摘记（原创摘要）",
+      "source": "sources/recommendations-verified-notes.md",
+      "sha256Html": "0410bfdc458ffffa17fefc2269b447d177620b521e5f4f510f5422502d6d84a3",
+      "textCharacters": 2218
+    },
+    {
+      "id": "advanced-appendix-37",
+      "title": "Riichi Book I — Chapter 03: Riichi mahjong basics",
+      "source": "sources/riichi-book-i-ch03.md",
+      "sha256Html": "09dae804dd20729d44f9933fbdb96ac238172b7a0ddabef37e7e45a3c4f79776",
+      "textCharacters": 63160
+    },
+    {
+      "id": "advanced-appendix-38",
+      "title": "Riichi Book I — Chapter 04: The five-block method",
+      "source": "sources/riichi-book-i-ch04.md",
+      "sha256Html": "926bcfc15df59329e538a5afc8934f78cee3a9accf2d2181ef9afd50edfa2ee4",
+      "textCharacters": 34653
+    },
+    {
+      "id": "advanced-appendix-39",
+      "title": "Riichi Book I — Chapter 05: Yaku",
+      "source": "sources/riichi-book-i-ch05.md",
+      "sha256Html": "fb2c2972c1e3b0931f6ffceb848a83fbd82c312b547dd4eb2c35236f2aa33642",
+      "textCharacters": 44761
+    },
+    {
+      "id": "advanced-appendix-40",
+      "title": "Riichi Book I — Chapter 06: Scoring",
+      "source": "sources/riichi-book-i-ch06.md",
+      "sha256Html": "9899a2f00610b5dea92c9c9037a670e3b5e88fe3e4fcf4dc5df2f8e67c844370",
+      "textCharacters": 38851
+    },
+    {
+      "id": "advanced-appendix-41",
+      "title": "Riichi Book I — Chapter 07: Riichi judgement",
+      "source": "sources/riichi-book-i-ch07.md",
+      "sha256Html": "9db39ff5a75f1d8a3c3321f82c61de9b87ebd7714c590b5aeccaf8f7e2846a6d",
+      "textCharacters": 44185
+    },
+    {
+      "id": "advanced-appendix-42",
+      "title": "Riichi Book I — Chapter 08: Defense judgement",
+      "source": "sources/riichi-book-i-ch08.md",
+      "sha256Html": "cce4af76e393be3d2b04fd6e4cf9d400f15b9ae3975d5645f6c93dd9dbf52fa8",
+      "textCharacters": 44679
+    },
+    {
+      "id": "advanced-appendix-43",
+      "title": "Riichi Book I — Chapter 09: Melding judgement",
+      "source": "sources/riichi-book-i-ch09.md",
+      "sha256Html": "52f10b73725aedfdc47b467dd0c0c0e3c0be02fe75ba868531a3c900715c5fd1",
+      "textCharacters": 29683
+    },
+    {
+      "id": "advanced-appendix-44",
+      "title": "Riichi Book I — Chapter 10: Grand strategies",
+      "source": "sources/riichi-book-i-ch10.md",
+      "sha256Html": "8c6a19901808b4d0e01b809beaa2d6fcc803da205962004e6d3b662eb721983f",
+      "textCharacters": 23541
+    },
+    {
+      "id": "advanced-appendix-45",
+      "title": "天鳳官方手册（抓取原文）",
+      "source": "sources/tenhou-manual.md",
+      "sha256Html": "64b6dae670107932957492f9488fca44e7fbef03bb4eafd40649a945412d9e67",
+      "textCharacters": 24622
+    }
+  ],
+  "supplementNote": "23 lesson files and lab README match the export exactly; original linked workbook/answer/source files are supplemented from the adjacent subject source. No source scripts run.",
+  "omittedTypesettingOnly": [
+    "bfseries",
+    "bottomrule",
+    "color",
+    "fontsize",
+    "large",
+    "midrule",
+    "noindent",
+    "selectfont",
+    "sffamily",
+    "small",
+    "thispagestyle",
+    "toprule",
+    "vfill",
+    "vspace"
+  ],
+  "assets": [
+    {
+      "path": "learning-data.js",
+      "sha256": "ba1ba8ea4478410bcd42452930b57d3feaea5bd262268bf20df55dd7f702101f"
+    },
+    {
+      "path": "learning-ui.js",
+      "sha256": "75987140d06208b875f0b5f91849ae38f439314a0096344a2f435636837c265e"
+    },
+    {
+      "path": "learning.css",
+      "sha256": "d28bc29acfcc3dc9f608ec689da165ee6f4d0d6c748fcecac0b4bb138bd85cb1"
+    },
+    {
+      "path": "learning-katex.js",
+      "sha256": "10a91b479cd927446ceb60409fb0d72b5d0d05eaf446c9e52fafd64058c84540"
+    },
+    {
+      "path": "learning-katex.css",
+      "sha256": "b4f15e4dd1cfbb8f0b5b3202cd5a00f83aa24b113692b3be42d1e9063dea4507"
+    },
+    {
+      "path": "learn-page-01.png",
+      "sha256": "6cec4b9b6a7eed337fd143af4df479ff10c9546b32a2450454487eaf77cfe3da"
+    },
+    {
+      "path": "learn-page-02.png",
+      "sha256": "0a36e7d6ddc7525f98c6014247ffd109676d7df57a39223c1c117eff936a5efa"
+    },
+    {
+      "path": "learn-page-03.png",
+      "sha256": "b3292827a8d0ab853a4c86f8f25182f07e6eb4051ebfad9a997189c1e862d46f"
+    },
+    {
+      "path": "learn-page-04.png",
+      "sha256": "a741165396f088718c828862fa19d4f9fa001ae3181e07ce2cc60a15293d0b9e"
+    },
+    {
+      "path": "learn-page-05.png",
+      "sha256": "2a7fef0abe98b2e45e124f788cfa7985a73fa1492b4b82b25dfb13aedac030ae"
+    },
+    {
+      "path": "learn-page-06.png",
+      "sha256": "7d363c26e979b5a7b7fe119513f953eaae87702db5e1cb08b2101ecae60354b0"
+    },
+    {
+      "path": "learn-page-07.png",
+      "sha256": "cc6a410583c037ce0e222aec4b8f34b9c6216601e7b969dfb2a527f914811873"
+    },
+    {
+      "path": "learn-page-08.png",
+      "sha256": "a503394ec812264582aa1ad0170797c113c95b51973d39eb164c0cbea4d9759c"
+    },
+    {
+      "path": "learn-page-09.png",
+      "sha256": "89af3c5265756b064f9fe59f780032af77fab2f82f70ef0be7f6cf4fb1ce2d3a"
+    },
+    {
+      "path": "learn-page-10.png",
+      "sha256": "d7373214a4548ee2f1bc49b356cea207e7238fb5381a6eaec1fc0272a2bc858d"
+    },
+    {
+      "path": "learn-page-11.png",
+      "sha256": "576371754a3640fd84615d620e5fe4585bf5b10ed99a461f13378403836ec0c0"
+    },
+    {
+      "path": "learn-page-12.png",
+      "sha256": "fb3f623f9135df9aa38df543208326dd39a6ecf72ca2f306813ccdedf9c00867"
+    },
+    {
+      "path": "learn-page-13.png",
+      "sha256": "1b6e91f96bd904747ebe472d165882118906c9682f2a763999b6414bd866dfdd"
+    },
+    {
+      "path": "learn-page-14.png",
+      "sha256": "120f9eb96c9b2709b7e414cf0fc98d693f6b60ea494b09f5d5abf017e1e8b51b"
+    },
+    {
+      "path": "learn-page-15.png",
+      "sha256": "f5f0afa72b7efdeb87910cfedfe14b8521d628f5a26196df221bed6a7e7804d5"
+    },
+    {
+      "path": "learn-diagram-01.png",
+      "sha256": "22532786b017f3046a252ce64739788df97f9959fa1de057e47b78bae20c0c40"
+    },
+    {
+      "path": "learn-diagram-02.png",
+      "sha256": "af0d40c8ec34f83f1062ff63396563831664754bebeeaba415ebbbe60510aca2"
+    },
+    {
+      "path": "learn-diagram-03.png",
+      "sha256": "0e58267605bf1d0759fb98c9a57a7c4745c11fed2097c37a7bb33619c8796557"
+    },
+    {
+      "path": "learn-diagram-04.png",
+      "sha256": "16dd0a9534f594644cccaf0b8c10771df6a6a63dc496fa2ed61237a14cac4d96"
+    },
+    {
+      "path": "learn-diagram-05.png",
+      "sha256": "78a8896cf26ef378baaee329760193e5a7f10baf16a8a2f33e3fdb8696ccde68"
+    },
+    {
+      "path": "learn-diagram-06.png",
+      "sha256": "008a61966b115eda23992496d18340d1928a0c95cd35f73e475511a961936cd6"
+    },
+    {
+      "path": "learn-diagram-07.png",
+      "sha256": "a0400c1d08d5617126a2c0acb547fd45cdc930b7eb3d06887a963a57be8edea2"
+    },
+    {
+      "path": "learn-diagram-08.png",
+      "sha256": "757d205b003efe852a76bc78eb975f002a208a948a783287b87ddb1e9716f45c"
+    },
+    {
+      "path": "learn-diagram-09.png",
+      "sha256": "961a55373ef6719252e9d930b929990ba854bcdbe320bf5c87cbe293739e89c7"
+    },
+    {
+      "path": "learn-diagram-10.png",
+      "sha256": "6f9253e8ca5afe9742c609d3f2506d59a01c035d7dbf0dec09a76dc63685f135"
+    },
+    {
+      "path": "learn-diagram-11.png",
+      "sha256": "3481c62bfe648a04301eb818a955e892d611a21c951ff193796ffff97a93ea25"
+    },
+    {
+      "path": "learn-diagram-12.png",
+      "sha256": "2c37ec5b7a6b096728c0ed7d29a0566f8a6b6a1c31b0c2409d54063991215ab8"
+    },
+    {
+      "path": "learn-diagram-13.png",
+      "sha256": "f767e74c076d0ac9e5e83386cb6ce29ca5042d8fd148d4254100074f3d3abf0f"
+    },
+    {
+      "path": "learn-diagram-14.png",
+      "sha256": "7ab8c9147d2564eae742b85d7b2b4ad0b73241ffd1ef93a377b147f648e83f89"
+    },
+    {
+      "path": "KaTeX_AMS-Regular.woff2",
+      "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308"
+    },
+    {
+      "path": "KaTeX_Caligraphic-Bold.woff2",
+      "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c"
+    },
+    {
+      "path": "KaTeX_Caligraphic-Regular.woff2",
+      "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b"
+    },
+    {
+      "path": "KaTeX_Fraktur-Bold.woff2",
+      "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f"
+    },
+    {
+      "path": "KaTeX_Fraktur-Regular.woff2",
+      "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc"
+    },
+    {
+      "path": "KaTeX_Main-Bold.woff2",
+      "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021"
+    },
+    {
+      "path": "KaTeX_Main-BoldItalic.woff2",
+      "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b"
+    },
+    {
+      "path": "KaTeX_Main-Italic.woff2",
+      "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267"
+    },
+    {
+      "path": "KaTeX_Main-Regular.woff2",
+      "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866"
+    },
+    {
+      "path": "KaTeX_Math-BoldItalic.woff2",
+      "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1"
+    },
+    {
+      "path": "KaTeX_Math-Italic.woff2",
+      "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264"
+    },
+    {
+      "path": "KaTeX_SansSerif-Bold.woff2",
+      "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62"
+    },
+    {
+      "path": "KaTeX_SansSerif-Italic.woff2",
+      "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a"
+    },
+    {
+      "path": "KaTeX_SansSerif-Regular.woff2",
+      "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342"
+    },
+    {
+      "path": "KaTeX_Script-Regular.woff2",
+      "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b"
+    },
+    {
+      "path": "KaTeX_Size1-Regular.woff2",
+      "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe"
+    },
+    {
+      "path": "KaTeX_Size2-Regular.woff2",
+      "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd"
+    },
+    {
+      "path": "KaTeX_Size3-Regular.woff2",
+      "sha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995"
+    },
+    {
+      "path": "KaTeX_Size4-Regular.woff2",
+      "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0"
+    },
+    {
+      "path": "KaTeX_Typewriter-Regular.woff2",
+      "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b"
+    }
+  ]
+}

@@ -5,3 +5,6 @@ original-web-backup.zip
 *.apk
 *.idsig
 node_modules/
+
+__pycache__/
+*.py[cod]

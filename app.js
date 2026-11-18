@@ -49,17 +49,24 @@
     render();
   }
   function show(next) {
+    if(window.MJLearningUI)window.MJLearningUI.beforeNavigate(next);
     view = next;
     if(next==='history')renderHistory();
     document.querySelectorAll('.view').forEach(e => e.classList.toggle('active', e.id === 'view-' + next));
-    document.querySelectorAll('[data-view]').forEach(e => e.classList.toggle('active', e.dataset.view === (next.endsWith('-table')?'yaku':next==='calc'&&scope==='table'?'game':next)));
+    document.querySelectorAll('[data-view]').forEach(e => e.classList.toggle('active', e.dataset.view === (['learning','course','reader','guide'].includes(next)?'learning':next.endsWith('-table')?'yaku':['discard','pure'].includes(next)?'practice':next==='efficiency'?'calc':next==='calc'&&scope==='table'?'game':next)));
     window.scrollTo(0, 0);
     miniResult.classList.toggle('hidden', next !== 'calc' || !result);
+    document.dispatchEvent(new CustomEvent('queyou:view',{detail:next}));
   }
   window.appBack = function () {
     if ($('diceDialog').open) { $('diceDialog').close(); return true; }
     if ($('tilePicker').open) { $('tilePicker').close(); return true; }
     if ($('dialog').open) { $('dialog').close(); return true; }
+    if (view==='settings' && window.MJSettingsUI) { window.MJSettingsUI.back(); return true; }
+    if (window.MJLearningUI&&window.MJLearningUI.back()) return true;
+    if (view==='guide') {show('learning'); return true;}
+    if (['discard','pure'].includes(view)) { show('practice'); return true; }
+    if (view==='efficiency') { show('calc'); return true; }
     if (view.endsWith('-table')) { show('yaku'); return true; }
     if (view !== 'game') { show('game'); return true; }
     return false;
@@ -68,8 +75,8 @@
     $('dialogTitle').textContent = title; $('dialogBody').innerHTML = body;
     $('dialogConfirm').disabled = false; onConfirm = confirm; $('dialog').showModal();
   }
-  $('dialogConfirm').onclick = () => {
-    try { $('dialogConfirm').disabled = true; onConfirm(); $('dialog').close(); }
+  $('dialogConfirm').onclick = async () => {
+    try { $('dialogConfirm').disabled = true; await onConfirm(); $('dialog').close(); }
     catch (e) { $('dialogConfirm').disabled = false; toast(e.message); }
   };
   function rollDice(){
@@ -79,7 +86,7 @@
       const face=$('die'+i);face.dataset.value=String(n);face.setAttribute('aria-label',`第 ${i+1} 颗：${n} 点`);
       face.innerHTML=Array.from({length:9},(_,j)=>`<span class="dice-dot ${dots[n].includes(j)?'filled':''}"></span>`).join('');
       $('dieLabel'+i).textContent=`第 ${i+1} 颗 · ${n} 点`;
-      if(face.animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)face.animate([{transform:'rotate(-8deg) scale(.92)'},{transform:'rotate(8deg)'},{transform:'rotate(0) scale(1)'}],{duration:220});
+      if(face.animate&&!(window.MJSettings&&MJSettings.get().reduceMotion)&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)face.animate([{transform:'rotate(-8deg) scale(.92)'},{transform:'rotate(8deg)'},{transform:'rotate(0) scale(1)'}],{duration:220});
     });
     $('diceTotal').textContent=`${values[0]} ＋ ${values[1]} ＝ ${values[0]+values[1]} 点`;
   }
@@ -385,11 +392,11 @@
   $('undoEvent').onclick=()=>{const g=game();if(!g||!g.events.length)return;const last=g.events[g.events.length-1];dialog('撤销上一笔',`<p>${esc(last.label)}</p>${lines(g,last.transfers)}<p class="hint">将恢复这笔记录前的余额和供托。</p>`,()=>{const next=JSON.parse(JSON.stringify(g));next.events.pop();next.roundBaseIndex=Math.min(next.roundBaseIndex||0,next.events.length);commit(next);S.booked=false;saveState();render();toast('已撤销');});};
   $('sessionSelect').onchange=()=>{activate(+$('sessionSelect').value);toast('已恢复这桌的点数与局况');};
   function renderStorage(){
-    const bytes=[KEY,KEY+'.recovery','queyou.practice.v1'].reduce((n,key)=>n+2*(localStorage.getItem(key)||'').length,0);
+    const bytes=[KEY,KEY+'.recovery','queyou.practice.v1','queyou.analysis.v1','queyou.training.v1','queyou.learning.v1','queyou.appearance.v1'].reduce((n,key)=>n+2*(localStorage.getItem(key)||'').length,0);
     $('storageUsage').textContent=`${db.games.length} 个对局 · ${db.games.reduce((n,g)=>n+g.events.length,0)} 笔记录 · 本地记录约 ${bytes<1024?bytes+' B':bytes<1048576?(bytes/1024).toFixed(1)+' KB':(bytes/1048576).toFixed(2)+' MB'}`;
     $('deleteGame').disabled=!game();$('clearHistory').disabled=db.games.length-(game()?1:0)===0;
   }
-  function cleanData(kind){
+  async function cleanData(kind){
     const previous={db,S,soloState,tableState,scope,simple,guideRead,quizAnswers,recoveryRaw};
     const selected=game();
     if(kind==='all'){
@@ -406,6 +413,9 @@
     try{persist();}catch(err){({db,S,soloState,tableState,scope,simple,guideRead,quizAnswers,recoveryRaw}=previous);throw Error('清除未保存，原记录已保留，请重试');}
     localStorage.removeItem(KEY+'.recovery');
     if(kind==='all'&&window.MJPracticeUI)window.MJPracticeUI.reset();
+    if(kind==='all'&&window.MJTrainingUI)window.MJTrainingUI.reset();
+    if(kind==='all'&&window.MJLearningUI)window.MJLearningUI.reset();
+    if(kind==='all'&&window.MJSettings)await MJSettings.reset();
     draft=[];target='hand';deleting=false;
     if(kind==='all'&&window.Android&&Android.clearLocalCache)Android.clearLocalCache();
     render();renderGuide();renderStorage();show('history');toast(kind==='all'?'本地数据已清空':kind==='history'?'历史对局已清除，当前对局保留':'所选对局已删除');
@@ -418,7 +428,7 @@
     const g=game(),count=db.games.length-(g?1:0);if(!count)return;
     dialog('清除历史对局',`<p>将删除除当前所选对局外的 <strong>${count} 个对局</strong>。</p>${g?`<p>保留：${esc(g.names.join(' / '))}，及其分数和局况。</p>`:''}<p class="warning">删除后不能撤销，需要保留时请先备份。</p>`,()=>cleanData('history'));
   };
-  $('clearLocalData').onclick=()=>dialog('清空全部本地数据',`<p>将删除全部 ${db.games.length} 个对局、每笔支付、算点输入、学习进度、练习成绩和本地恢复副本，并清理应用网页缓存。</p><p>软件功能和已导出的备份文件会保留。</p><p class="warning">此操作不能撤销，需要保留记录时请先备份。</p>`,()=>cleanData('all'));
+  $('clearLocalData').onclick=()=>dialog('清空全部本地数据',`<p>将删除全部 ${db.games.length} 个对局、每笔支付、算点输入、学习进度、练习成绩、外观设置、背景图片和本地恢复副本，并清理应用网页缓存。</p><p>软件功能和已导出的备份文件会保留。</p><p class="warning">此操作不能撤销，需要保留记录时请先备份。</p>`,()=>cleanData('all'));
   $('practiceReset').onclick=()=>dialog('清除练习成绩','<p>清除点数与符数两种练习的全部汇总成绩。对局、算点输入和指南进度保留；不能撤销。</p>',()=>{window.MJPracticeUI.reset();renderStorage();toast('练习成绩已清除');});
   $('yakuSearch').oninput=renderYaku;
   function download(filename,mime,text){if(window.Android&&Android.saveFile){Android.saveFile(filename,mime,text);return;}const url=URL.createObjectURL(new Blob([text],{type:mime}));const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);}
@@ -429,5 +439,6 @@
   window.importBackup=importBackup;
   $('importFile').onchange=async()=>{const f=$('importFile').files[0];if(!f)return;if(f.size>10*1024*1024){toast('备份文件不能超过 10 MB');return;}importBackup(await f.text());$('importFile').value='';};
   window.addEventListener('pagehide',saveState); document.addEventListener('visibilitychange',()=>{if(document.hidden)saveState();});
+  window.MJApp={go:show,confirm:dialog,analysisInput:()=>({players:S.players,hand:S.hand.slice(),melds:JSON.parse(JSON.stringify(S.melds)),dora:S.dora.slice(),nuki:S.nuki,seatWind:S.seatWind,roundWind:S.roundWind})};
   openSolo();renderYaku();renderGuide();
 })();
